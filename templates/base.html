@@ -32,7 +32,7 @@
             <li class="nav-item"><a class="nav-link" href="{{ url_for('farmer_dashboard') }}" data-i18n="nav_dashboard"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
             <li class="nav-item ms-lg-2"><a class="btn btn-primary-nav" href="{{ url_for('farmer_report_new') }}"><i class="bi bi-plus-circle me-1"></i>Report Damage</a></li>
           {% else %}
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_dashboard') }}" data-i18n="nav_admin"><i class="bi bi-shield-check me-1"></i>Admin Panel</a></li>
+            <li class="nav-item"><a class="nav-link {% if request.endpoint in ['admin_dashboard','admin_reports','admin_report_detail'] %}active{% endif %}" href="{{ url_for('admin_dashboard') }}" data-i18n="nav_admin" {% if request.endpoint in ['admin_dashboard','admin_reports','admin_report_detail'] %}aria-current="page"{% endif %}><i class="bi bi-shield-check me-1"></i>Admin Panel</a></li>
           {% endif %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
@@ -77,7 +77,7 @@
 <main>{% block content %}{% endblock %}</main>
 
 <footer class="footer-two">
-  <div class="container">
+  <div class="container-fluid" style="max-width:1300px;">
     <div class="row g-4">
       <div class="col-lg-4">
         <div class="d-flex align-items-center gap-2 mb-3">

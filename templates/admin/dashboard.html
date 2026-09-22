@@ -41,9 +41,9 @@
                 <tr>
                   <td>#{{ r.id }}</td>
                   <td class="fw-semibold">{{ r.farmer_name }}<div class="text-muted small">{{ r.mobile }}</div></td>
-                  <td>{{ r.crop_type }}<div class="text-muted">{{ r.damage_type }}</div></td>
+                  <td>{{ r.crop_type }}<div><span class="badge" style="background:{% if r.damage_type=='Heavy Monsoon' %}#1B7A3B{% elif r.damage_type=='Flood' %}#2563EB{% elif r.damage_type=='Drought' %}#F59E0B{% elif r.damage_type=='Pollution' %}#DC2626{% elif r.damage_type=='Pest Attack' %}#7C3AED{% elif r.damage_type=='Hailstorm' %}#EA580C{% else %}#64748B{% endif %}; color:white; border-radius:999px; font-size:0.72rem;">{{ r.damage_type }}</span></div></td>
                   <td>{{ r.village }}, {{ r.district }}</td>
-                  <td><span class="badge bg-{{ 'danger' if r.severity=='Severe' else 'warning text-dark' if r.severity=='High' else 'secondary' }}">{{ r.severity }}</span></td>
+                  <td><span class="badge" style="background:{% if r.severity=='Severe' %}#DC2626{% elif r.severity=='High' %}#F59E0B{% elif r.severity=='Medium' %}#0EA5E9{% else %}#94A3B8{% endif %}; color:{% if r.severity=='High' %}#1C1917{% else %}white{% endif %}; border-radius:999px; font-weight:700;">{{ r.severity }}</span></td>
                   <td><a href="{{ url_for('admin_report_detail', report_id=r.id) }}" class="btn btn-sm" style="background:var(--snow); color:var(--green); border:1.5px solid var(--green); border-radius:999px; font-weight:600;" aria-label="Review report {{ r.id }}">Review</a></td>
                 </tr>
               {% endfor %}
@@ -83,15 +83,19 @@
 <script>
 const typeCounts = {{ stats.type_counts | tojson }};
 const severityCounts = {{ severity_counts | tojson }};
+// High-contrast palettes — consistent with table badges
+const typePalette = {'Heavy Monsoon':'#1B7A3B','Flood':'#2563EB','Drought':'#F59E0B','Pollution':'#DC2626','Pest Attack':'#7C3AED','Hailstorm':'#EA580C','Other':'#64748B'};
+const sevOrder = ['Low','Medium','High','Severe'];
+const sevPalette = {'Low':'#94A3B8','Medium':'#0EA5E9','High':'#F59E0B','Severe':'#DC2626'};
 new Chart(document.getElementById('typeChart'), {
   type:'doughnut',
-  data:{labels:Object.keys(typeCounts), datasets:[{data:Object.values(typeCounts), backgroundColor:['#198754','#0dcaf0','#ffc107','#dc3545','#6c757d','#fd7e14','#20c997']}]},
-  options:{plugins:{legend:{position:'bottom'}}}
+  data:{labels:Object.keys(typeCounts), datasets:[{data:Object.values(typeCounts), backgroundColor:Object.keys(typeCounts).map(k=>typePalette[k]||'#64748B')}]},
+  options:{plugins:{legend:{position:'bottom', labels:{boxPadding:12, usePointStyle:true}}}}
 });
 new Chart(document.getElementById('severityChart'), {
   type:'bar',
-  data:{labels:Object.keys(severityCounts), datasets:[{label:'Reports', data:Object.values(severityCounts), backgroundColor:'#198754'}]},
-  options:{plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true, ticks:{precision:0}}}}
+  data:{labels:sevOrder, datasets:[{label:'Reports', data:sevOrder.map(k=>severityCounts[k]||0), backgroundColor:sevOrder.map(k=>sevPalette[k]), borderRadius:6}]},
+  options:{plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true, ticks:{precision:0}}, x:{grid:{display:false}}}}
 });
 </script>
 {% endblock %}
