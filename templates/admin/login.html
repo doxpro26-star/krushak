@@ -5,28 +5,28 @@
   <div class="row justify-content-center">
     <div class="col-md-5">
       <div class="text-center mb-4">
-        <div class="mx-auto bg-dark text-white rounded-circle d-flex align-items-center justify-content-center mb-2" style="width:56px;height:56px;"><i class="bi bi-shield-lock fs-4"></i></div>
-        <h3 class="fw-bold">Admin Login</h3>
-        <p class="text-muted small">District Agriculture Office • Demo: <strong>admin / admin123</strong></p>
+        <div class="mx-auto d-flex align-items-center justify-content-center mb-2" style="width:56px;height:56px; background:var(--green); color:var(--snow); border-radius:50%;" aria-hidden="true"><i class="bi bi-shield-lock fs-4"></i></div>
+        <h1 class="h3 fw-bold" style="color:var(--green);">Admin Login</h1>
+        <p class="small" style="color:rgba(27,122,59,0.68);">District Agriculture Office • Demo: <strong style="color:var(--green);">admin / admin123</strong></p>
       </div>
-      <div class="card border-0 shadow-lg rounded-4">
-        <div class="card-body p-4 p-md-5">
+      <div class="card border-0 shadow-lg rounded-4" style="border:1.5px solid var(--green-line);">
+        <div class="card-body p-4">
           <form method="POST">
-            <label class="form-label fw-semibold small">Admin Username / Email</label>
+            <label class="form-label fw-semibold small" style="color:var(--green);">Admin Username / Email</label>
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="bi bi-person-gear"></i></span>
-              <input name="username" class="form-control form-control-lg" required placeholder="admin">
+              <span class="input-group-text" style="background:var(--snow); border:1.5px solid var(--green-line); color:var(--green);" aria-hidden="true"><i class="bi bi-person-gear"></i></span>
+              <input name="username" class="form-control form-control-lg" required placeholder="admin" style="border:1.5px solid var(--green-line);">
             </div>
-            <label class="form-label fw-semibold small">Password</label>
+            <label class="form-label fw-semibold small" style="color:var(--green);">Password</label>
             <div class="input-group mb-3">
-              <span class="input-group-text"><i class="bi bi-key"></i></span>
-              <input name="password" type="password" class="form-control form-control-lg" required placeholder="admin123">
+              <span class="input-group-text" style="background:var(--snow); border:1.5px solid var(--green-line); color:var(--green);" aria-hidden="true"><i class="bi bi-key"></i></span>
+              <input name="password" type="password" class="form-control form-control-lg" required placeholder="admin123" style="border:1.5px solid var(--green-line);">
             </div>
-            <button class="btn btn-dark btn-lg w-100 fw-bold" type="submit"><i class="bi bi-box-arrow-in-right me-2"></i>Login to Admin Panel</button>
+            <button class="btn w-100 fw-bold" type="submit" style="background:var(--green); color:var(--snow); border:1.5px solid var(--green); border-radius:var(--r-md); padding:12px; font-size:var(--fs-base);"><i class="bi bi-box-arrow-in-right me-2" aria-hidden="true"></i>Login to Admin Panel</button>
           </form>
         </div>
       </div>
-      <div class="alert alert-light border mt-3 small text-center">Farmer? <a href="{{ url_for('farmer_login') }}" class="fw-bold">Go to Farmer Login</a></div>
+      <div class="text-center mt-3 small" style="color:rgba(27,122,59,0.68);">Farmer? <a href="{{ url_for('farmer_login') }}" class="fw-bold" style="color:var(--green); text-decoration:underline; text-underline-offset:3px;">Go to Farmer Login</a></div>
     </div>
   </div>
 </div>
