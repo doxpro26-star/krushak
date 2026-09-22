@@ -26,12 +26,14 @@
               <div class="form-check m-0"><input class="form-check-input" type="checkbox" id="remember"><label class="form-check-label" for="remember">Remember me</label></div>
               <span class="text-muted">Forgot? Call helpline</span>
             </div>
-            <button class="btn btn-success btn-lg w-100 mt-4 fw-bold" type="submit" style="border-radius:var(--r-md);"><i class="bi bi-box-arrow-in-right me-2" aria-hidden="true"></i>Login to Dashboard</button>
-            <div class="text-center small mt-3">New farmer? <a href="{{ url_for('farmer_register') }}" class="fw-bold text-success">Register in 30 sec</a></div>
+            <button class="btn btn-success btn-lg w-100 mt-4 fw-bold" type="submit" style="border-radius:var(--r-md); background:var(--green); border-color:var(--green);"><i class="bi bi-box-arrow-in-right me-2" aria-hidden="true"></i>Login to Dashboard</button>
+            <div class="text-center small mt-3">New farmer? <a href="{{ url_for('farmer_register') }}" class="fw-bold" style="color:var(--green);">Register in 30 sec</a></div>
+            <div class="text-center mt-3 pt-3" style="border-top:1px solid var(--green-line);">
+              <a href="{{ url_for('admin_login') }}" style="color:var(--green); font-weight:600; font-size:var(--fs-sm);">Are you Admin? Login here</a>
+            </div>
           </form>
         </div>
       </div>
-      <div class="text-center mt-3"><a href="{{ url_for('admin_login') }}" class="small text-muted">Are you Admin? Login here</a></div>
     </div>
   </div>
 </div>

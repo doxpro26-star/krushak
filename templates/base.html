@@ -47,7 +47,7 @@
         {% else %}
           <li class="nav-item"><a class="btn btn-outline-nav {% if request.endpoint == 'farmer_login' %}active{% endif %}" href="{{ url_for('farmer_login') }}" data-i18n="nav_farmer_login" {% if request.endpoint == 'farmer_login' %}aria-current="page"{% endif %}>Farmer Login</a></li>
           <li class="nav-item ms-lg-1"><a class="btn btn-primary-nav {% if request.endpoint == 'farmer_register' %}active{% endif %}" href="{{ url_for('farmer_register') }}" data-i18n="nav_farmer_register" {% if request.endpoint == 'farmer_register' %}aria-current="page"{% endif %}>Farmer Register</a></li>
-          <li class="nav-item"><a class="nav-link small {% if request.endpoint == 'admin_login' %}active{% endif %}" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short" {% if request.endpoint == 'admin_login' %}aria-current="page"{% endif %}>Admin</a></li>
+          <li class="nav-item"><a class="btn btn-outline-nav {% if request.endpoint == 'admin_login' %}active{% endif %}" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short" {% if request.endpoint == 'admin_login' %}aria-current="page"{% endif %}>Admin</a></li>
         {% endif %}
         <li class="nav-item ms-lg-2">
           <div class="dropdown">
@@ -89,7 +89,7 @@
         <p class="small mb-0"><i class="bi bi-telephone me-2"></i>1800-180-1551 • <i class="bi bi-envelope ms-2"></i> help@krushak.gov.in</p>
       </div>
       <div class="col-6 col-lg-2">
-        <h3 class="h6 small fw-bold" style="letter-spacing:.4px;">QUICK LINKS</h3>
+        <h2 class="h6 small fw-bold" style="letter-spacing:.4px;">QUICK LINKS</h2>
         <ul class="list-unstyled small">
           <li><a href="{{ url_for('farmer_register') }}">Farmer Registration</a></li>
           <li><a href="{{ url_for('farmer_report_new') }}">Report Damage</a></li>
@@ -98,10 +98,13 @@
         </ul>
       </div>
       <div class="col-6 col-lg-3">
-        <h3 class="h6 small fw-bold">DAMAGE COVERED</h3>
-        <div class="d-flex flex-wrap align-items-start" style="gap:8px;">
-          <span class="tag-two">Heavy Monsoon</span><span class="tag-two">Flood</span><span class="tag-two">Drought</span><span class="tag-two">Pollution</span>
-        </div>
+        <h2 class="h6 small fw-bold">DAMAGE COVERED</h2>
+        <ul class="list-unstyled small" style="display:flex; flex-direction:column; gap:8px;">
+          <li><span class="tag-two">Heavy Monsoon</span></li>
+          <li><span class="tag-two">Flood</span></li>
+          <li><span class="tag-two">Drought</span></li>
+          <li><span class="tag-two">Pollution</span></li>
+        </ul>
       </div>
       <div class="col-lg-3 text-lg-end">
         <div class="small muted">Verified by</div>
