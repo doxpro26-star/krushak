@@ -36,6 +36,8 @@ a{ color:var(--green); }
 #mainNav .navbar-nav .nav-item{ display:flex; align-items:center; }
 @media(max-width:991px){ #mainNav .navbar-nav{ gap:8px; } }
 .brand-icon{ width:40px; height:40px; background:var(--green); color:var(--snow); border-radius:var(--r-md); display:inline-flex; align-items:center; justify-content:center; font-size:var(--fs-lg);}
+.brand-logo{ width:40px; height:40px; border-radius:var(--r-md); object-fit:contain; background:var(--snow); border:1.5px solid var(--green); padding:2px; }
+.brand-logo[src*="logo.png"]{ background:white; }
 .brand-text{ font-family:'Poppins',sans-serif; font-weight:800; color:var(--green); font-size:1.2rem; letter-spacing:-.4px;}
 .brand-badge{ background:var(--snow); color:var(--green); border:1.5px solid var(--green); font-size:var(--fs-xs); padding:4px 8px; border-radius:var(--r-pill); font-weight:800;}
 .navbar-nav .nav-link{ color:var(--green)!important; font-weight:600; font-size:var(--fs-sm); padding:8px 14px!important;}
