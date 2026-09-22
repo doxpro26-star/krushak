@@ -49,7 +49,7 @@ a{ color:var(--green); }
 .btn-outline-nav:hover{ background:var(--green); color:var(--snow);}
 .btn-outline-nav.active, .btn-outline-nav[aria-current="page"]{ background:var(--green); color:var(--snow); border-color:var(--green); box-shadow:0 2px 8px rgba(27,122,59,0.18); }
 .btn-primary-nav.active, .btn-primary-nav[aria-current="page"]{ background:var(--green-dark); color:var(--snow); border-color:var(--green-dark); box-shadow:inset 0 2px 6px rgba(0,0,0,0.18); }
-.btn-lang{ background:var(--snow); border:1.5px solid var(--green); color:var(--green); padding:7px 12px; border-radius:var(--r-md); font-weight:700; font-size:var(--fs-xs);}
+.btn-lang{ background:var(--snow); border:1.5px solid var(--green); color:var(--green); padding:9px 18px; border-radius:var(--r-md); font-weight:700; font-size:var(--fs-sm); line-height:1.2; min-height:38px; display:inline-flex; align-items:center; justify-content:center;}
 .btn-lang:hover{ background:var(--green); color:var(--snow);}
 .navbar-toggler{ border:1.5px solid var(--green); }
 .navbar-toggler-icon{ background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%231B7A3B' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");}
