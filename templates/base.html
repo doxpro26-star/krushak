@@ -17,7 +17,7 @@
       <span class="brand-text">Krushak</span>
       <span class="brand-badge">GOVT • 2026</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="nav">
@@ -32,9 +32,7 @@
             <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_dashboard') }}" data-i18n="nav_admin"><i class="bi bi-shield-check me-1"></i>Admin Panel</a></li>
           {% endif %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-1"></i>{{ current_user.username }}
-            </a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="bi bi-person-circle me-1"></i>{{ current_user.username }}</a>
             <ul class="dropdown-menu dropdown-menu-end shadow-sm">
               <li><span class="dropdown-item-text small text-muted">{{ current_user.role|upper }} • {{ current_user.district }}</span></li>
               <li><hr class="dropdown-divider"></li>
@@ -48,13 +46,11 @@
         {% endif %}
         <li class="nav-item ms-lg-2">
           <div class="dropdown">
-            <button class="btn btn-lang dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-translate me-1"></i><span class="lang-label">EN</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="min-width:140px;">
+            <button class="btn btn-lang dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-translate me-1"></i><span class="lang-label">EN</span></button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
               <li><a class="dropdown-item lang-opt active" href="#" data-lang="en" onclick="setLang('en');return false;">English</a></li>
-              <li><a class="dropdown-item lang-opt" href="#" data-lang="mr" onclick="setLang('mr');return false;">मराठी (Marathi)</a></li>
-              <li><a class="dropdown-item lang-opt" href="#" data-lang="hi" onclick="setLang('hi');return false;">हिंदी (Hindi)</a></li>
+              <li><a class="dropdown-item lang-opt" href="#" data-lang="mr" onclick="setLang('mr');return false;">मराठी</a></li>
+              <li><a class="dropdown-item lang-opt" href="#" data-lang="hi" onclick="setLang('hi');return false;">हिंदी</a></li>
             </ul>
           </div>
         </li>
@@ -67,32 +63,28 @@
   {% if messages %}
     <div class="container mt-3">
       {% for category, msg in messages %}
-        <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm border-0" role="alert">
-          {{ msg }} <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
+        <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm border-0" role="alert">{{ msg }}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
       {% endfor %}
     </div>
   {% endif %}
 {% endwith %}
 
-<main>
-{% block content %}{% endblock %}
-</main>
+<main>{% block content %}{% endblock %}</main>
 
-<footer class="footer-human">
+<footer class="footer-clean">
   <div class="container">
     <div class="row g-4">
       <div class="col-lg-4">
         <div class="d-flex align-items-center gap-2 mb-3">
           <span class="brand-icon"><i class="bi bi-flower1"></i></span>
-          <span class="fw-bold" style="color:white; font-family:Fraunces,serif; font-size:1.2rem;">Krushak</span>
+          <span class="fw-bold" style="color:white; font-family:Poppins,sans-serif;">Krushak</span>
           <span class="brand-badge">ENTERPRISE</span>
         </div>
-        <p class="small" style="color:#D6D3D1;">Hand-built for farmers. Real support for real fields — Monsoon, Flood, Pollution, Drought & Pest. DBT straight to your account.</p>
-        <p class="small mb-0" style="color:#A8A29E;"><i class="bi bi-telephone me-2"></i>1800-180-1551 • <i class="bi bi-envelope ms-2 me-1"></i> help@krushak.gov.in</p>
+        <p class="small" style="color:#BDC1C6;">Clean, farm-first platform for Monsoon, Flood, Pollution, Drought & Pest. Simple 2-minute reporting, direct DBT.</p>
+        <p class="small mb-0"><i class="bi bi-telephone me-2"></i>1800-180-1551 • <i class="bi bi-envelope ms-2"></i> help@krushak.gov.in</p>
       </div>
       <div class="col-6 col-lg-2">
-        <h6 class="small fw-bold" style="color:#FEF3C7; letter-spacing:.5px;">QUICK LINKS</h6>
+        <h6 class="small fw-bold" style="color:var(--light2);">QUICK LINKS</h6>
         <ul class="list-unstyled small">
           <li><a href="{{ url_for('farmer_register') }}">Farmer Registration</a></li>
           <li><a href="{{ url_for('farmer_report_new') }}">Report Damage</a></li>
@@ -101,15 +93,15 @@
         </ul>
       </div>
       <div class="col-6 col-lg-3">
-        <h6 class="small fw-bold" style="color:#FEF3C7;">DAMAGE COVERED</h6>
-        <div class="d-flex flex-wrap gap-1">
-          <span class="badge" style="background:white; color:#1C1917; border:1.5px solid #1C1917;">Heavy Monsoon</span><span class="badge" style="background:white; color:#1C1917; border:1.5px solid #1C1917;">Flood</span><span class="badge" style="background:white; color:#1C1917; border:1.5px solid #1C1917;">Drought</span><span class="badge" style="background:white; color:#1C1917; border:1.5px solid #1C1917;">Pollution</span>
+        <h6 class="small fw-bold" style="color:var(--light2);">DAMAGE COVERED</h6>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge bg-white text-dark">Heavy Monsoon</span><span class="badge bg-white text-dark">Flood</span><span class="badge bg-white text-dark">Drought</span><span class="badge bg-white text-dark">Pollution</span>
         </div>
       </div>
       <div class="col-lg-3 text-lg-end">
-        <div class="small" style="color:#A8A29E;">Verified by</div>
+        <div class="small" style="color:#9AA0A6;">Verified by</div>
         <div class="fw-bold" style="color:white;">Ministry of Agriculture<br>& Farmers Welfare</div>
-        <div class="mt-2 small" style="color:#78716C;">© 2026 Krushak • For the hands that feed</div>
+        <div class="mt-2 small" style="color:#80868B;">© 2026 Krushak • For farmers, by Krushak</div>
       </div>
     </div>
   </div>
