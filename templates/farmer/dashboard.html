@@ -2,15 +2,15 @@
 {% block title %}Farmer Dashboard{% endblock %}
 {% block content %}
 <div class="container py-4">
-  <div class="row align-items-center g-3 mb-4">
+  <div class="row align-items-center g-2 mb-1">
     <div class="col-md-8">
-      <h1 class="h3 fw-bold mb-1" style="line-height:1.2;"><span data-i18n="dash_welcome">Welcome</span>, {{ current_user.username }} <span class="text-success">🌱</span></h1>
-      <p class="text-muted small mb-0"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ current_user.village }}, {{ current_user.district }} • <i class="bi bi-phone me-1" aria-hidden="true"></i>{{ current_user.mobile }}</p>
+      <h1 class="h3 fw-bold mb-0" style="line-height:1.2;"><span data-i18n="dash_welcome">Welcome</span>, {{ current_user.username }} <span class="text-success">🌱</span></h1>
     </div>
-    <div class="col-md-4 text-md-end d-flex align-items-center justify-content-md-end" style="min-height:56px;">
-      <a href="{{ url_for('farmer_report_new') }}" class="btn btn-primary-nav d-inline-flex align-items-center justify-content-center" style="align-self:center;" data-i18n="dash_start" aria-label="Report new damage"><i class="bi bi-plus-lg me-1" aria-hidden="true"></i> Report New Damage</a>
+    <div class="col-md-4 text-md-end">
+      <a href="{{ url_for('farmer_report_new') }}" class="btn btn-primary-nav d-inline-flex align-items-center justify-content-center" data-i18n="dash_start" aria-label="Report new damage"><i class="bi bi-plus-lg me-1" aria-hidden="true"></i> Report New Damage</a>
     </div>
   </div>
+  <p class="text-muted small mb-4"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ current_user.village }}, {{ current_user.district }} • <i class="bi bi-phone me-1" aria-hidden="true"></i>{{ current_user.mobile }}</p>
 
   <div class="row g-3 mb-4">
     <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3"><div class="text-muted small" data-i18n="dash_total">Total Reports</div><div class="fs-2 fw-bold">{{ stats.total }}</div></div></div>
@@ -22,7 +22,7 @@
   <div class="card border-0 shadow-sm rounded-4">
     <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center p-4" style="border-radius:16px 16px 0 0;">
       <h2 class="h5 fw-bold mb-0" data-i18n="dash_my"><i class="bi bi-clipboard2-check me-2 text-success" aria-hidden="true"></i>My Damage Reports</h2>
-      <span class="badge bg-light text-dark border" style="border-radius:999px; padding:8px 14px;">{{ reports|length }} records</span>
+      <span class="badge bg-light text-dark border" style="border-radius:999px; padding:8px 14px;">{% if reports|length == 1 %}1 record{% else %}{{ reports|length }} records{% endif %}</span>
     </div>
     <div class="card-body p-0">
       {% if reports %}
@@ -38,7 +38,7 @@
               <td><div class="fw-semibold small">{{ r.crop_type }}</div><div class="small text-muted">{{ r.damage_type }} • {{ r.farm_size }} acre</div></td>
               <td class="small">{{ r.village }}, {{ r.district }}</td>
               <td class="small">{{ r.damage_date }}</td>
-              <td><span style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:var(--fs-sm); color:var(--green);"><span style="width:8px; height:8px; border-radius:50%; background:{% if r.severity=='High' %}#F59E0B{% elif r.severity=='Severe' %}#DC2626{% elif r.severity=='Medium' %}#0EA5E9{% else %}#6B7280{% endif %}; display:inline-block; flex-shrink:0;" aria-hidden="true"></span>{{ r.severity }}</span></td>
+              <td><span style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:var(--fs-sm); color:var(--green);"><span style="width:8px; height:8px; border-radius:50%; background:{% if r.severity=='High' %}#DC2626{% elif r.severity=='Severe' %}#7F1D1D{% elif r.severity=='Medium' %}#0EA5E9{% else %}#6B7280{% endif %}; display:inline-block; flex-shrink:0;" aria-hidden="true"></span>{{ r.severity }}</span></td>
               <td><span style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:var(--fs-sm);"><span style="width:8px; height:8px; border-radius:50%; background:{% if r.status=='Pending' %}#F59E0B{% elif r.status=='Approved' %}#1B7A3B{% elif r.status=='Verified' %}#0EA5E9{% elif r.status=='Rejected' %}#DC2626{% else %}#1B7A3B{% endif %}; display:inline-block;" aria-hidden="true"></span>{{ r.status }}</span></td>
               <td><a href="{{ url_for('farmer_report_detail', report_id=r.id) }}" class="btn btn-sm fw-bold" style="background:var(--snow); color:var(--green); border:1.5px solid var(--green); border-radius:var(--r-md); padding:7px 14px; min-height:32px;" data-i18n="admin_manage">View</a></td>
             </tr>
@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <div class="alert alert-success mt-4 d-flex gap-3 align-items-start p-4" style="border-radius:var(--r-md); padding-top:20px; padding-bottom:20px;">
+  <div class="alert alert-success mt-4 d-flex gap-3 align-items-start" style="border-radius:var(--r-md); padding:24px;">
     <i class="bi bi-lightbulb fs-4" aria-hidden="true"></i>
     <div class="small" data-i18n="dash_tip"><strong>Farmer Tip:</strong> Take photo from 2–3 angles, include nearby landmark. Clear photo = faster verification.</div>
   </div>
