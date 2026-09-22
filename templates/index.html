@@ -15,7 +15,7 @@
         <p class="hero-desc mb-4" data-i18n="hero_desc">Report crop loss due to <strong>Heavy Monsoon, Flood, Pollution, Drought or Pest</strong> in 2 minutes. Simple form, photo upload, instant tracking. Admin verifies & initiates compensation.</p>
         <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
           <a href="{{ url_for('farmer_report_new') }}" class="btn-green" data-i18n="btn_report"><i class="bi bi-plus-circle"></i> Report Damage Now</a>
-          <a href="{{ url_for('farmer_register') }}" class="btn-white" data-i18n="btn_register">New Farmer? Register</a>
+          <a href="{{ url_for('farmer_register') }}" class="btn-green" data-i18n="btn_register">New Farmer? Register</a>
         </div>
         <div class="hero-checks mb-4">
           <span><i class="bi bi-check-lg"></i> <span data-i18n="check1">No agents, No fees</span></span>
@@ -55,9 +55,9 @@
       <p style="color:rgba(27,122,59,0.68);" data-i18n="how_sub">No complicated pages. Big buttons, clear language, photo guidance.</p>
     </div>
     <div class="row g-4">
-      <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-person-plus"></i></div><h3 class="h5 fw-bold" data-i18n="how1_t">1. Register / Login</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how1_d">Mobile + Village + District. One-time. Username also works.</p><span class="hero-pill mx-auto" data-i18n="how1_b">30 seconds</span></div></div>
-      <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-camera"></i></div><h3 class="h5 fw-bold" data-i18n="how2_t">2. Report Damage</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how2_d">Select Monsoon / Pollution / Flood. Add crop, farm size, 1 photo.</p><span class="hero-pill mx-auto" data-i18n="how2_b">2 minutes</span></div></div>
-      <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-bell"></i></div><h3 class="h5 fw-bold" data-i18n="how3_t">3. Track & Get Help</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how3_d">Pending → Verified → Approved. SMS + Compensation to account.</p><span class="hero-pill mx-auto" data-i18n="how3_b">24–48 hours</span></div></div>
+      <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-person-plus"></i></div><h3 class="h5 fw-bold" data-i18n="how1_t">1. Register / Login</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how1_d">Mobile + Village + District. One-time. Username also works.</p><span class="badge-info mx-auto" data-i18n="how1_b">30 seconds</span></div></div>
+      <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-camera"></i></div><h3 class="h5 fw-bold" data-i18n="how2_t">2. Report Damage</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how2_d">Select Monsoon / Pollution / Flood. Add crop, farm size, 1 photo.</p><span class="badge-info mx-auto" data-i18n="how2_b">2 minutes</span></div></div>
+      <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-bell"></i></div><h3 class="h5 fw-bold" data-i18n="how3_t">3. Track & Get Help</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how3_d">Pending → Verified → Approved. SMS + Compensation to account.</p><span class="badge-info mx-auto" data-i18n="how3_b">24–48 hours</span></div></div>
     </div>
   </div>
 </section>
@@ -68,7 +68,7 @@
     <div class="d-flex align-items-center gap-3 mb-4">
       <span style="width:6px; height:32px; background:var(--green); border-radius:99px;"></span>
       <h4 class="fw-bold mb-0" data-i18n="damage_title">What damage can you report?</h4>
-      <span class="hero-pill ms-auto d-none d-md-inline">6 CATEGORIES</span>
+      <span class="badge-info ms-auto d-none d-md-inline">6 categories</span>
     </div>
     <div class="row g-3">
       <div class="col-6 col-md-2"><div class="card-farm-two h-100"><img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400&q=80&auto=format" alt="Heavy Monsoon" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?w=400&q=80&auto=format'"><div class="farm-body"><h5 class="farm-title" data-i18n="dmg_monsoon_t">Heavy Monsoon</h5><p class="farm-desc" data-i18n="dmg_monsoon_d">Excess rain, waterlogging</p></div></div></div>
@@ -84,8 +84,8 @@
 {% if recent %}
 <section class="py-4" style="background:var(--green-light); border-top:1.5px solid var(--green-line);">
   <div class="container">
-    <h5 class="fw-bold mb-3 text-center text-md-start" data-i18n="recent_title">Recent Reports (anonymized)</h5>
-    <div class="row g-3 justify-content-center">
+    <h5 class="fw-bold mb-3 text-start" data-i18n="recent_title">Recent Reports (anonymized)</h5>
+    <div class="row g-3 justify-content-start">
       {% for r in recent %}
       <div class="col-md-6 col-lg-4"><div class="card-two recent-card" style="text-align:left;"><div class="d-flex justify-content-between"><span class="{% if r.status=='Pending' %}badge-status-pending{% else %}badge-status-success{% endif %}" style="padding:4px 10px; border-radius:999px; font-weight:700; font-size:var(--fs-xs);">{{ r.status }}</span><small style="opacity:.6;">{{ r.created_at.strftime('%d %b %Y') }}</small></div><h6 class="fw-bold mt-2 mb-1">{{ r.crop_type }} • {{ r.damage_type }}</h6><div class="small" style="opacity:.7;"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ r.village }}, {{ r.district }} • {{ r.farm_size }} acre • {{ r.severity }}</div><p class="small mt-2 mb-0 clamp-3" title="{{ r.description }}">{{ r.description }}</p></div></div>
       {% endfor %}

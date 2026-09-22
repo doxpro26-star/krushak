@@ -40,9 +40,9 @@ a{ color:var(--green); }
 .brand-badge{ background:var(--snow); color:var(--green); border:1.5px solid var(--green); font-size:var(--fs-xs); padding:4px 8px; border-radius:var(--r-pill); font-weight:800;}
 .navbar-nav .nav-link{ color:var(--green)!important; font-weight:600; font-size:var(--fs-sm); padding:8px 14px!important;}
 .navbar-nav .nav-link:hover,.navbar-nav .nav-link.active{ text-decoration:underline; text-underline-offset:4px;}
-.btn-primary-nav{ background:var(--green); color:var(--snow); border:1.5px solid var(--green); padding:10px 18px; border-radius:var(--r-md); font-weight:700; font-size:var(--fs-sm);}
+.btn-primary-nav{ background:var(--green); color:var(--snow); border:1.5px solid var(--green); padding:9px 18px; border-radius:var(--r-md); font-weight:700; font-size:var(--fs-sm); line-height:1.2; min-height:38px; display:inline-flex; align-items:center; justify-content:center;}
 .btn-primary-nav:hover{ background:var(--green-dark); color:var(--snow); border-color:var(--green-dark);}
-.btn-outline-nav{ border:1.8px solid var(--green); color:var(--green); background:var(--snow); padding:8px 18px; border-radius:var(--r-md); font-weight:700; font-size:var(--fs-sm);}
+.btn-outline-nav{ border:1.5px solid var(--green); color:var(--green); background:var(--snow); padding:9px 18px; border-radius:var(--r-md); font-weight:700; font-size:var(--fs-sm); line-height:1.2; min-height:38px; display:inline-flex; align-items:center; justify-content:center;}
 .btn-outline-nav:hover{ background:var(--green); color:var(--snow);}
 .btn-lang{ background:var(--snow); border:1.5px solid var(--green); color:var(--green); padding:7px 12px; border-radius:var(--r-md); font-weight:700; font-size:var(--fs-xs);}
 .btn-lang:hover{ background:var(--green); color:var(--snow);}
@@ -104,6 +104,8 @@ a{ color:var(--green); }
 /* ALERTS — two colour */
 .alert{ border:1.5px solid var(--green)!important; background:var(--snow)!important; color:var(--green)!important; border-radius:var(--r-md)!important;}
 .badge{ font-size:var(--fs-xs); border-radius:var(--r-pill); }
+/* Non-interactive informational badges — distinct from buttons (no border pill) */
+.badge-info{ background:var(--green-light); color:var(--green); border:none; padding:6px 10px; border-radius:8px; font-weight:600; font-size:var(--fs-xs); display:inline-flex; align-items:center; justify-content:center; }
 
 /* Status badges — semantic */
 .badge-status-pending{ background:#FEF3C7!important; color:#92400E!important; border:1.5px solid #F59E0B!important; }
