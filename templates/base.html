@@ -44,7 +44,7 @@
         {% else %}
           <li class="nav-item"><a class="btn btn-outline-nav" href="{{ url_for('farmer_login') }}" data-i18n="nav_farmer_login">Farmer Login</a></li>
           <li class="nav-item ms-lg-1"><a class="btn btn-primary-nav" href="{{ url_for('farmer_register') }}" data-i18n="nav_farmer_register">Farmer Register</a></li>
-          <li class="nav-item"><a class="nav-link small" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short" style="opacity:.7;">Admin</a></li>
+          <li class="nav-item"><a class="btn btn-outline-nav" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short" aria-label="Admin login">Admin</a></li>
         {% endif %}
         <li class="nav-item ms-lg-2">
           <div class="dropdown">
