@@ -30,8 +30,11 @@ h4{ font-size:var(--fs-xl); }
 a{ color:var(--green); }
 .text-muted{ color:rgba(27,122,59,0.68)!important; }
 
-/* NAV — Snow White + Green */
+/* NAV — Snow White + Green — spacing fix: 20px gap for click targets */
 #mainNav{ background:var(--snow); border-bottom:1.5px solid var(--green-line); padding:12px 0; }
+#mainNav .navbar-nav{ gap:20px; }
+#mainNav .navbar-nav .nav-item{ display:flex; align-items:center; }
+@media(max-width:991px){ #mainNav .navbar-nav{ gap:8px; } }
 .brand-icon{ width:40px; height:40px; background:var(--green); color:var(--snow); border-radius:var(--r-md); display:inline-flex; align-items:center; justify-content:center; font-size:var(--fs-lg);}
 .brand-text{ font-family:'Poppins',sans-serif; font-weight:800; color:var(--green); font-size:1.2rem; letter-spacing:-.4px;}
 .brand-badge{ background:var(--snow); color:var(--green); border:1.5px solid var(--green); font-size:var(--fs-xs); padding:4px 8px; border-radius:var(--r-pill); font-weight:800;}
@@ -60,8 +63,8 @@ a{ color:var(--green); }
 .btn-white:hover{ background:var(--green); color:var(--snow);}
 .hero-checks{ display:flex; flex-wrap:wrap; gap:16px; font-weight:600; color:var(--green); font-size:var(--fs-sm);}
 .hero-checks i{ width:22px; height:22px; background:var(--green); color:var(--snow); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:var(--fs-xs);}
-.help-two{ background:var(--snow); border:1.5px solid var(--green); border-radius:var(--r-lg); padding:14px 16px; display:flex; gap:12px; align-items:center; max-width:390px; box-shadow:0 6px 20px rgba(27,122,59,0.08);}
-.help-icon-two{ width:44px; height:44px; background:var(--green); color:var(--snow); border-radius:var(--r-md); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:var(--fs-lg);}
+.help-two{ background:var(--green-light); border:none; border-radius:var(--r-lg); padding:10px 14px; display:flex; gap:10px; align-items:center; max-width:390px; box-shadow:none;}
+.help-icon-two{ width:32px; height:32px; background:var(--snow); color:var(--green); border:1px solid var(--green-line); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:var(--fs-sm);}
 .hero-visual{ position:relative; }
 .hero-visual img{ width:100%; height:auto; max-height:460px; object-fit:contain; display:block; }
 
