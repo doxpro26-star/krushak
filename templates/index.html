@@ -10,24 +10,21 @@
         </div>
       </div>
       <div class="col-lg-6 order-2 order-lg-1">
-        <div class="hero-pill mb-3" data-i18n="hero_badge"><i class="bi bi-shield-check"></i> Government of India • Direct Benefit Transfer</div>
-        <h1 class="hero-title mb-3"><span data-i18n="hero_title1">Your Farm is Damaged?</span><br><span class="hero-catchy" data-i18n="hero_title2">We are with you.</span> <span aria-hidden="true" style="font-size:1.2em;">🌾</span></h1>
+        <div class="hero-pill mb-3" data-i18n="hero_badge"><i class="bi bi-shield-check" aria-hidden="true"></i> Government of India • Direct Benefit Transfer</div>
+        <h1 class="hero-title mb-3"><span data-i18n="hero_title1">Your Farm is Damaged?</span><br><span class="hero-catchy" data-i18n="hero_title2">We are with you.</span> <span aria-hidden="true">🌾</span></h1>
         <p class="hero-desc mb-4" data-i18n="hero_desc">Report crop loss due to <strong>Heavy Monsoon, Flood, Pollution, Drought or Pest</strong> in 2 minutes. Simple form, photo upload, instant tracking. Admin verifies & initiates compensation.</p>
-        <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
+        <div class="d-flex flex-column flex-sm-row gap-3 mb-3">
           <a href="{{ url_for('farmer_report_new') }}" class="btn-green" data-i18n="btn_report" aria-label="Report crop damage now"><i class="bi bi-plus-circle" aria-hidden="true"></i> Report Damage Now</a>
           <a href="{{ url_for('farmer_register') }}" class="btn-white" data-i18n="btn_register">New Farmer? Register</a>
         </div>
-        <div class="hero-checks mb-4">
-          <span><i class="bi bi-check-lg"></i> <span data-i18n="check1">No agents, No fees</span></span>
-          <span><i class="bi bi-check-lg"></i> <span data-i18n="check2">24–48h verification</span></span>
-          <span><i class="bi bi-check-lg"></i> <span data-i18n="check3">SMS updates</span></span>
+        <div class="hero-checks mb-3">
+          <span><i class="bi bi-check-lg" aria-hidden="true"></i> <span data-i18n="check1">No agents, No fees</span></span>
+          <span><i class="bi bi-check-lg" aria-hidden="true"></i> <span data-i18n="check2">24–48h verification</span></span>
+          <span><i class="bi bi-check-lg" aria-hidden="true"></i> <span data-i18n="check3">SMS updates</span></span>
         </div>
-        <div class="help-two">
-          <span class="help-icon-two"><i class="bi bi-telephone"></i></span>
-          <div>
-            <div class="small fw-bold" data-i18n="help_title">Toll-Free Help for Farmers</div>
-            <div class="fw-bold"><span data-i18n="help_num">1800-180-1551</span> <span class="fw-normal" style="opacity:.7; font-size:.84rem;" data-i18n="help_lang">| Voice support in Marathi/Hindi</span></div>
-          </div>
+        <div class="d-flex align-items-center gap-2 mt-4" style="color:var(--green); font-size:var(--fs-sm);">
+          <i class="bi bi-telephone" aria-hidden="true" style="width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--green-line); border-radius:50%; font-size:12px;"></i>
+          <span data-i18n="help_title">Toll-Free Help for Farmers</span> <span style="opacity:.6;">•</span> <strong data-i18n="help_num">1800-180-1551</strong>
         </div>
       </div>
     </div>
@@ -50,7 +47,7 @@
   </div>
 </section>
 
-<!-- TRUST — GREEN BAR — placed after How for logical flow (context before trust) -->
+<!-- TRUST — GREEN BAR — placed after How for logical flow -->
 <section class="trust-two" aria-label="Trust indicators">
   <div class="container">
     <div class="row g-0">
@@ -82,25 +79,25 @@
 </section>
 
 {% if recent %}
-<section class="py-4" style="background:var(--green-light); border-top:1.5px solid var(--green-line);">
+<section class="py-4" style="background:var(--snow); border-top:1.5px solid var(--green-line);">
   <div class="container">
-    <h5 class="fw-bold mb-3 text-center" data-i18n="recent_title">Recent Reports (anonymized)</h5>
-    <div class="row g-3 justify-content-center">
+    <h5 class="fw-bold mb-3 text-start" data-i18n="recent_title">Recent Reports (anonymized)</h5>
+    <div class="row g-3">
       {% for r in recent %}
-      <div class="col-12 col-md-10 col-lg-8 d-flex justify-content-center"><div class="card-two recent-card" style="text-align:left; width:100%; max-width:600px;"><div class="d-flex justify-content-between"><span class="{% if r.status=='Pending' %}badge-status-pending{% else %}badge-status-success{% endif %}" style="padding:4px 10px; border-radius:999px; font-weight:700; font-size:var(--fs-xs);">{{ r.status }}</span><small style="opacity:.6;">{{ r.created_at.strftime('%d %b %Y') }}</small></div><h6 class="fw-bold mt-2 mb-1">{{ r.crop_type }} • {{ r.damage_type }}</h6><div class="small" style="opacity:.7;"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ r.village }}, {{ r.district }} • {{ r.farm_size }} acre • {{ r.severity }}</div><p class="small mt-2 mb-0 clamp-3" title="{{ r.description }}">{{ r.description }}</p></div></div>
+      <div class="col-md-4"><div class="card-two recent-card-compact" style="text-align:left;"><div class="d-flex justify-content-between"><span class="{% if r.status=='Pending' %}badge-status-pending{% else %}badge-status-success{% endif %}" style="padding:4px 10px; border-radius:999px; font-weight:700; font-size:var(--fs-xs);">{{ r.status }}</span><small style="opacity:.6;">{{ r.created_at.strftime('%d %b %Y') }}</small></div><h6 class="fw-bold mt-2 mb-1">{{ r.crop_type }} • {{ r.damage_type }}</h6><div class="small" style="opacity:.7;"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ r.village }}, {{ r.district }} • {{ r.farm_size }} acre • {{ r.severity }}</div><p class="small mt-2 mb-0 clamp-3" title="{{ r.description }}">{{ r.description }}</p></div></div>
       {% endfor %}
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- CTA — GREEN -->
-<section class="cta-two">
-  <div class="container">
-    <h2 class="fw-bold" data-i18n="cta_title">Ready to get support for your farm?</h2>
-    <p class="mt-2" data-i18n="cta_sub">Join {{ stats.total }}+ farmers who already reported. Takes only 2 minutes. Helpline always open.</p>
-    <a href="{{ url_for('farmer_register') }}" class="btn-cta mt-3" data-i18n="cta_btn">Create Free Farmer Account <i class="bi bi-arrow-right ms-2"></i></a>
-    <div class="small mt-3" style="opacity:.85;"><span data-i18n="cta_login">Already have account? Login here</span> • <a href="{{ url_for('admin_login') }}" style="color:var(--snow); text-decoration:underline;" data-i18n="cta_admin">Admin login</a></div>
+<!-- CTA — SNOW with GREEN primary (consistent) -->
+<section class="cta-two" style="background:var(--snow); border-top:1.5px solid var(--green-line);">
+  <div class="container text-center">
+    <h2 class="fw-bold" style="color:var(--green);" data-i18n="cta_title">Ready to get support for your farm?</h2>
+    <p class="mt-2" style="color:rgba(27,122,59,0.72);" data-i18n="cta_sub">Join {{ stats.total }}+ farmers who already reported. Takes only 2 minutes. Helpline always open.</p>
+    <a href="{{ url_for('farmer_register') }}" class="btn-green mt-3" data-i18n="cta_btn">Create Free Farmer Account <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></a>
+    <div class="small mt-3" style="color:rgba(27,122,59,0.68);"><span data-i18n="cta_login">Already have account? Login here</span> • <a href="{{ url_for('admin_login') }}" style="color:var(--green); text-decoration:underline;" data-i18n="cta_admin">Admin login</a></div>
   </div>
 </section>
 {% endblock %}
