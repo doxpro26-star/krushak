@@ -46,7 +46,7 @@
           </li>
         {% else %}
           <li class="nav-item"><a class="nav-link {% if request.endpoint == 'farmer_login' %}active{% endif %}" href="{{ url_for('farmer_login') }}" data-i18n="nav_farmer_login" {% if request.endpoint == 'farmer_login' %}aria-current="page"{% endif %}>Farmer Login</a></li>
-          <li class="nav-item ms-lg-1"><a class="btn btn-primary-nav {% if request.endpoint == 'farmer_register' %}active{% endif %}" href="{{ url_for('farmer_register') }}" data-i18n="nav_farmer_register" {% if request.endpoint == 'farmer_register' %}aria-current="page"{% endif %}>Farmer Register</a></li>
+          <li class="nav-item ms-lg-1"><a class="btn btn-outline-nav {% if request.endpoint == 'farmer_register' %}active{% endif %}" href="{{ url_for('farmer_register') }}" data-i18n="nav_farmer_register" {% if request.endpoint == 'farmer_register' %}aria-current="page"{% endif %}>Farmer Register</a></li>
           <li class="nav-item"><a class="nav-link small {% if request.endpoint == 'admin_login' %}active{% endif %}" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short" {% if request.endpoint == 'admin_login' %}aria-current="page"{% endif %}>Admin</a></li>
         {% endif %}
         <li class="nav-item ms-lg-2">

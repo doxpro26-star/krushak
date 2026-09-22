@@ -82,9 +82,9 @@
 <section class="py-4" style="background:var(--snow); border-top:1.5px solid var(--green-line);">
   <div class="container">
     <h5 class="fw-bold mb-3 text-start" data-i18n="recent_title">Recent Reports (anonymized)</h5>
-    <div class="row g-3">
+    <div class="row g-3 justify-content-start">
       {% for r in recent %}
-      <div class="col-md-4"><div class="card-two recent-card-compact" style="text-align:left;"><div class="d-flex justify-content-between"><span class="{% if r.status=='Pending' %}badge-status-pending{% else %}badge-status-success{% endif %}" style="padding:4px 10px; border-radius:999px; font-weight:700; font-size:var(--fs-xs);">{{ r.status }}</span><small style="opacity:.6;">{{ r.created_at.strftime('%d %b %Y') }}</small></div><h6 class="fw-bold mt-2 mb-1">{{ r.crop_type }} • {{ r.damage_type }}</h6><div class="small" style="opacity:.7;"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ r.village }}, {{ r.district }} • {{ r.farm_size }} acre • {{ r.severity }}</div><p class="small mt-2 mb-0 clamp-3" title="{{ r.description }}">{{ r.description }}</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="card-two" style="text-align:left; padding:20px;"><div class="d-flex justify-content-between"><span class="{% if r.status=='Pending' %}badge-status-pending{% else %}badge-status-success{% endif %}" style="padding:4px 10px; border-radius:999px; font-weight:700; font-size:var(--fs-xs);">{{ r.status }}</span><small style="opacity:.6;">{{ r.created_at.strftime('%d %b %Y') }}</small></div><h6 class="fw-bold mt-2 mb-1">{{ r.crop_type }} • {{ r.damage_type }}</h6><div class="small" style="opacity:.7;"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ r.village }}, {{ r.district }} • {{ r.farm_size }} acre • {{ r.severity }}</div><p class="small mt-2 mb-0 clamp-3" title="{{ r.description }}">{{ r.description }}</p></div></div>
       {% endfor %}
     </div>
   </div>
@@ -96,8 +96,11 @@
   <div class="container text-center">
     <h2 class="fw-bold" style="color:var(--green);" data-i18n="cta_title">Ready to get support for your farm?</h2>
     <p class="mt-2" style="color:rgba(27,122,59,0.72);" data-i18n="cta_sub">Join {{ stats.total }}+ farmers who already reported. Takes only 2 minutes. Helpline always open.</p>
-    <a href="{{ url_for('farmer_register') }}" class="btn-green mt-3" data-i18n="cta_btn">Create Free Farmer Account <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></a>
-    <div class="small mt-3" style="color:rgba(27,122,59,0.68);"><span data-i18n="cta_login">Already have account? Login here</span> • <a href="{{ url_for('admin_login') }}" style="color:var(--green); text-decoration:underline;" data-i18n="cta_admin">Admin login</a></div>
+    <a href="{{ url_for('farmer_register') }}" class="btn-white mt-3" data-i18n="cta_btn">Create Free Farmer Account <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></a>
+    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center mt-4">
+      <span data-i18n="cta_login" style="color:var(--green);">Already have account? Login here</span>
+      <a href="{{ url_for('admin_login') }}" class="btn btn-outline-nav" style="padding:10px 22px; min-height:44px; font-size:var(--fs-sm);" data-i18n="cta_admin">Admin login</a>
+    </div>
   </div>
 </section>
 {% endblock %}
