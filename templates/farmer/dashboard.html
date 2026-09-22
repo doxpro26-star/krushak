@@ -2,12 +2,14 @@
 {% block title %}Farmer Dashboard{% endblock %}
 {% block content %}
 <div class="container py-4">
-  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
-    <div>
+  <div class="row align-items-center g-3 mb-4">
+    <div class="col-md-8">
       <h1 class="h3 fw-bold mb-1"><span data-i18n="dash_welcome">Welcome</span>, {{ current_user.username }} <span class="text-success">🌱</span></h1>
       <p class="text-muted small mb-0"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ current_user.village }}, {{ current_user.district }} • <i class="bi bi-phone me-1" aria-hidden="true"></i>{{ current_user.mobile }}</p>
     </div>
-    <a href="{{ url_for('farmer_report_new') }}" class="btn btn-primary-nav d-flex align-items-center justify-content-center align-self-center" data-i18n="dash_start" aria-label="Report new damage"><i class="bi bi-plus-lg me-1" aria-hidden="true"></i> Report New Damage</a>
+    <div class="col-md-4 text-md-end">
+      <a href="{{ url_for('farmer_report_new') }}" class="btn btn-primary-nav d-inline-flex align-items-center justify-content-center" data-i18n="dash_start" aria-label="Report new damage"><i class="bi bi-plus-lg me-1" aria-hidden="true"></i> Report New Damage</a>
+    </div>
   </div>
 
   <div class="row g-3 mb-4">
@@ -18,7 +20,7 @@
   </div>
 
   <div class="card border-0 shadow-sm rounded-4">
-    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center pt-4" style="border-radius:16px 16px 0 0;">
+    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center pt-4 px-0" style="border-radius:16px 16px 0 0; padding-left:0; padding-right:0;">
       <h2 class="h5 fw-bold mb-0" data-i18n="dash_my"><i class="bi bi-clipboard2-check me-2 text-success" aria-hidden="true"></i>My Damage Reports</h2>
       <span class="badge bg-light text-dark border" style="border-radius:999px;">{{ reports|length }} records</span>
     </div>
@@ -38,7 +40,7 @@
               <td class="small">{{ r.damage_date }}</td>
               <td><span style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:var(--fs-sm); color:var(--green);"><span style="width:8px; height:8px; border-radius:50%; background:{% if r.severity=='High' %}#F59E0B{% elif r.severity=='Severe' %}#DC2626{% elif r.severity=='Medium' %}#0EA5E9{% else %}#6B7280{% endif %}; display:inline-block; flex-shrink:0;" aria-hidden="true"></span>{{ r.severity }}</span></td>
               <td><span style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:var(--fs-sm);"><span style="width:8px; height:8px; border-radius:50%; background:{% if r.status=='Pending' %}#F59E0B{% elif r.status=='Approved' %}#1B7A3B{% elif r.status=='Verified' %}#0EA5E9{% elif r.status=='Rejected' %}#DC2626{% else %}#1B7A3B{% endif %}; display:inline-block;" aria-hidden="true"></span>{{ r.status }}</span></td>
-              <td><a href="{{ url_for('farmer_report_detail', report_id=r.id) }}" class="btn btn-sm fw-bold" style="background:var(--green); color:var(--snow); border:1.5px solid var(--green); border-radius:var(--r-md); padding:7px 14px; min-height:32px;" data-i18n="admin_manage">View</a></td>
+              <td><a href="{{ url_for('farmer_report_detail', report_id=r.id) }}" class="btn btn-sm fw-bold" style="background:var(--snow); color:var(--green); border:1.5px solid var(--green); border-radius:var(--r-md); padding:7px 14px; min-height:32px;" data-i18n="admin_manage">View</a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -55,7 +57,7 @@
     </div>
   </div>
 
-  <div class="alert alert-success mt-4 d-flex gap-3 align-items-start" style="border-radius:var(--r-md);">
+  <div class="alert alert-success mt-4 d-flex gap-3 align-items-start p-4" style="border-radius:var(--r-md); padding-top:20px; padding-bottom:20px;">
     <i class="bi bi-lightbulb fs-4" aria-hidden="true"></i>
     <div class="small" data-i18n="dash_tip"><strong>Farmer Tip:</strong> Take photo from 2–3 angles, include nearby landmark. Clear photo = faster verification.</div>
   </div>
