@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Farmer Register{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="text-center mb-4">
+        <div class="mx-auto bg-success text-white rounded-circle d-flex align-items-center justify-content-center mb-2" style="width:56px;height:56px;"><i class="bi bi-person-plus fs-4"></i></div>
+        <h3 class="fw-bold">Create Farmer Account</h3>
+        <p class="text-muted small">Free, 30 seconds. Get instant access to damage reporting. No fees, No agent needed.</p>
+      </div>
+      <div class="card border-0 shadow-lg rounded-4">
+        <div class="card-body p-4 p-md-5">
+          <form method="POST" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Full Name / Username *</label>
+                <input name="username" class="form-control form-control-lg" placeholder="e.g., Ramesh Patil" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Mobile Number *</label>
+                <div class="input-group">
+                  <span class="input-group-text">+91</span>
+                  <input name="mobile" class="form-control form-control-lg" placeholder="9876543210" pattern="[0-9]{10}">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Email *</label>
+                <input name="email" type="email" class="form-control" placeholder="ramesh@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Password *</label>
+                <input name="password" type="password" class="form-control" placeholder="At least 6 characters" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Village *</label>
+                <input name="village" class="form-control" placeholder="e.g., Shirur" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">District *</label>
+                <select name="district" class="form-select" required>
+                  <option value="">Select district</option>
+                  <option>Pune</option><option>Nashik</option><option>Nagpur</option><option>Kolhapur</option><option>Satara</option><option>Solapur</option><option>Aurangabad</option><option>Jalgaon</option><option>Amravati</option><option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-check mt-3">
+              <input class="form-check-input" type="checkbox" required id="agree">
+              <label class="form-check-label small" for="agree">I confirm I am a farmer and information is true. I agree to verification by Agri Dept.</label>
+            </div>
+            <button class="btn btn-success btn-lg w-100 mt-4 fw-bold shadow" type="submit"><i class="bi bi-check-circle me-2"></i>Create Account — It's Free</button>
+            <div class="text-center small mt-3">Already have account? <a href="{{ url_for('farmer_login') }}" class="fw-bold text-success">Login here</a></div>
+            <div class="alert alert-light border mt-3 small mb-0">
+              <i class="bi bi-question-circle me-1"></i> Need help? Call <strong>1800-180-1551</strong> — we will register for you.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

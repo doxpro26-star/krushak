@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}All Reports - Admin{% endblock %}
+{% block content %}
+<div class="container-fluid py-4" style="max-width:1300px;">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+    <h4 class="fw-bold mb-0"><i class="bi bi-table me-2 text-success"></i>All Damage Reports</h4>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-4 mb-3">
+    <div class="card-body">
+      <form class="row g-2 align-items-end" method="GET">
+        <div class="col-md-3">
+          <label class="form-label small fw-semibold">Search</label>
+          <input name="q" value="{{ search }}" class="form-control" placeholder="Farmer, village, district, crop">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label small fw-semibold">Status</label>
+          <select name="status" class="form-select">
+            <option value="">All status</option>
+            <option {% if status_filter=='Pending' %}selected{% endif %}>Pending</option>
+            <option {% if status_filter=='Verified' %}selected{% endif %}>Verified</option>
+            <option {% if status_filter=='Approved' %}selected{% endif %}>Approved</option>
+            <option {% if status_filter=='Rejected' %}selected{% endif %}>Rejected</option>
+            <option {% if status_filter=='Compensation Initiated' %}selected{% endif %}>Compensation Initiated</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label small fw-semibold">Damage Type</label>
+          <select name="damage_type" class="form-select">
+            <option value="">All types</option>
+            <option {% if damage_filter=='Heavy Monsoon' %}selected{% endif %}>Heavy Monsoon</option>
+            <option {% if damage_filter=='Flood' %}selected{% endif %}>Flood</option>
+            <option {% if damage_filter=='Drought' %}selected{% endif %}>Drought</option>
+            <option {% if damage_filter=='Pollution' %}selected{% endif %}>Pollution</option>
+            <option {% if damage_filter=='Pest Attack' %}selected{% endif %}>Pest Attack</option>
+            <option {% if damage_filter=='Hailstorm' %}selected{% endif %}>Hailstorm</option>
+            <option {% if damage_filter=='Other' %}selected{% endif %}>Other</option>
+          </select>
+        </div>
+        <div class="col-md-3 d-flex gap-2">
+          <button class="btn btn-success flex-fill" type="submit"><i class="bi bi-search me-1"></i> Filter</button>
+          <a href="{{ url_for('admin_reports') }}" class="btn btn-outline-secondary">Reset</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table align-middle small mb-0">
+          <thead class="table-dark">
+            <tr><th>ID</th><th>Farmer & Contact</th><th>Crop</th><th>Damage • Severity</th><th>Location</th><th>Loss</th><th>Status</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            {% for r in reports %}
+            <tr>
+              <td class="fw-bold">#{{ r.id }}<div class="text-muted small">{{ r.created_at.strftime('%d %b') }}</div></td>
+              <td><div class="fw-semibold">{{ r.farmer_name }}</div><div class="text-muted small">{{ r.mobile }} • ID:{{ r.farmer_id }}</div></td>
+              <td>{{ r.crop_type }}<div class="text-muted small">{{ r.farm_size }} acre</div></td>
+              <td><span class="badge bg-light text-dark border">{{ r.damage_type }}</span> <span class="badge bg-{{ 'danger' if r.severity=='Severe' else 'warning text-dark' if r.severity=='High' else 'secondary' }}">{{ r.severity }}</span><div class="text-muted small">{{ r.damage_date }}</div></td>
+              <td>{{ r.village }}, {{ r.district }}</td>
+              <td>₹{{ r.estimated_loss or '—' }}</td>
+              <td>
+                {% if r.status=='Pending' %}<span class="badge bg-warning text-dark">Pending</span>
+                {% elif r.status=='Verified' %}<span class="badge bg-info">Verified</span>
+                {% elif r.status=='Approved' %}<span class="badge bg-success">Approved</span>
+                {% elif r.status=='Rejected' %}<span class="badge bg-danger">Rejected</span>
+                {% else %}<span class="badge bg-success">Compensation</span>{% endif %}
+              </td>
+              <td><a href="{{ url_for('admin_report_detail', report_id=r.id) }}" class="btn btn-sm btn-outline-success">Manage</a></td>
+            </tr>
+            {% else %}
+            <tr><td colspan="8" class="text-center py-4 text-muted">No reports match filter.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer bg-white small text-muted">Showing {{ reports|length }} reports • Export via Print (Ctrl+P)</div>
+  </div>
+</div>
+{% endblock %}

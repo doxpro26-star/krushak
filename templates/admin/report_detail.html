@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Manage Report #{{ report.id }}{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <a href="{{ url_for('admin_reports') }}" class="btn btn-outline-secondary btn-sm mb-3"><i class="bi bi-arrow-left"></i> Back to list</a>
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between">
+            <h4 class="fw-bold">Report #{{ report.id }} — {{ report.crop_type }}</h4>
+            <span class="badge bg-{{ 'warning text-dark' if report.status=='Pending' else 'success' if report.status=='Approved' else 'info' if report.status=='Verified' else 'danger' if report.status=='Rejected' else 'success' }} fs-6">{{ report.status }}</span>
+          </div>
+          <p class="small text-muted">Submitted {{ report.created_at.strftime('%d %b %Y %I:%M %p') }} by farmer ID {{ report.farmer_id }}</p>
+          <div class="row g-3 small">
+            <div class="col-md-6"><strong>Farmer:</strong> {{ report.farmer_name }} • {{ report.mobile }}</div>
+            <div class="col-md-6"><strong>Village/District:</strong> {{ report.village }}, {{ report.district }}, {{ report.state }} • Survey {{ report.survey_no or '—' }}</div>
+            <div class="col-md-4"><strong>Crop:</strong> {{ report.crop_type }}</div>
+            <div class="col-md-4"><strong>Farm Size:</strong> {{ report.farm_size }} acre</div>
+            <div class="col-md-4"><strong>Affected:</strong> {{ report.area_affected or '—' }}</div>
+            <div class="col-md-4"><strong>Damage:</strong> {{ report.damage_type }}</div>
+            <div class="col-md-4"><strong>Severity:</strong> {{ report.severity }}</div>
+            <div class="col-md-4"><strong>Date:</strong> {{ report.damage_date }}</div>
+            <div class="col-md-6"><strong>Estimated Loss:</strong> ₹{{ report.estimated_loss or '—' }}</div>
+            <div class="col-12"><strong>Description:</strong><div class="bg-light p-3 rounded-3 mt-1">{{ report.description }}</div></div>
+          </div>
+          {% if report.photo %}
+          <div class="mt-3">
+            <strong class="small">Field Photo:</strong><br>
+            <img src="{{ url_for('static', filename='uploads/' + report.photo) }}" class="img-fluid rounded-3 border mt-2" style="max-height:300px">
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <form method="POST" class="card border-0 shadow-sm rounded-4">
+        <div class="card-header bg-success text-white fw-bold"><i class="bi bi-pencil-square me-2"></i>Admin Action — Update Status</div>
+        <div class="card-body">
+          <label class="form-label small fw-semibold">Change Status *</label>
+          <select name="status" class="form-select mb-3" required>
+            <option value="Pending" {% if report.status=='Pending' %}selected{% endif %}>Pending — Needs review</option>
+            <option value="Verified" {% if report.status=='Verified' %}selected{% endif %}>Verified — Field visit done</option>
+            <option value="Approved" {% if report.status=='Approved' %}selected{% endif %}>Approved — Eligible for compensation</option>
+            <option value="Rejected" {% if report.status=='Rejected' %}selected{% endif %}>Rejected — Not eligible / data issue</option>
+            <option value="Compensation Initiated" {% if report.status=='Compensation Initiated' %}selected{% endif %}>Compensation Initiated — DBT started</option>
+          </select>
+          <label class="form-label small fw-semibold">Admin Remark (visible to farmer)</label>
+          <textarea name="admin_remark" rows="4" class="form-control" placeholder="e.g., Verified with talathi, 1.8 acre affected, approved for ₹35,000.">{{ report.admin_remark or '' }}</textarea>
+          <button class="btn btn-success w-100 mt-3 fw-bold" type="submit"><i class="bi bi-check-lg me-1"></i> Save Update & Notify Farmer</button>
+          <div class="small text-muted mt-2 text-center">Farmer will see new status instantly in dashboard.</div>
+        </div>
+      </form>
+      <form method="POST" action="{{ url_for('admin_report_delete', report_id=report.id) }}" onsubmit="return confirm('Delete this report?')" class="mt-3">
+        <button class="btn btn-outline-danger w-100 btn-sm" type="submit"><i class="bi bi-trash me-1"></i> Delete Report</button>
+      </form>
+      <div class="card border-0 shadow-sm rounded-4 mt-3">
+        <div class="card-body small">
+          <h6 class="fw-bold">Workflow Help</h6>
+          <ul class="mb-0">
+            <li><strong>Pending</strong> → initial state, farmer just submitted</li>
+            <li><strong>Verified</strong> → officer checked photo/survey</li>
+            <li><strong>Approved/Rejected</strong> → final decision</li>
+            <li><strong>Compensation Initiated</strong> → DBT done</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

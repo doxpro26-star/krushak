@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}About Scheme{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <h2 class="fw-bold">Krushak — Crop Damage Relief Scheme</h2>
+      <p class="text-muted">Enterprise platform connecting farmers directly to District Agriculture Office. No middleman, transparent tracking.</p>
+      <div class="card border-0 shadow-sm rounded-4 p-4">
+        <h5 class="fw-bold">Who can apply?</h5>
+        <ul class="small">
+          <li>Any farmer with land in Maharashtra (all districts) whose crop damaged due to natural or pollution reasons</li>
+          <li>Damage > 33% area eligible for compensation survey</li>
+        </ul>
+        <h5 class="fw-bold mt-3">Documents needed</h5>
+        <ul class="small">
+          <li>7/12, Survey number, Crop type & farm size</li>
+          <li>1 clear photo of damaged field (mobile click is okay)</li>
+          <li>Mobile number for SMS updates</li>
+        </ul>
+        <h5 class="fw-bold mt-3">Compensation flow</h5>
+        <ol class="small">
+          <li>Farmer submits report → Status <span class="badge bg-warning text-dark">Pending</span></li>
+          <li>Admin verifies field details/photos → <span class="badge bg-info">Verified</span></li>
+          <li>District officer approves → <span class="badge bg-success">Approved</span> → DBT to bank account (linked to Aadhaar)</li>
+          <li>If data incomplete → <span class="badge bg-danger">Rejected</span> with remark, farmer can re-apply</li>
+        </ol>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-success text-white">
+        <h6 class="fw-bold">Contact Support</h6>
+        <p class="small opacity-75">Mon–Sat 6AM–10PM, Marathi/Hindi/English</p>
+        <p class="mb-1"><i class="bi bi-telephone"></i> 1800-180-1551</p>
+        <p class="mb-1"><i class="bi bi-envelope"></i> help@krushak.gov.in</p>
+        <p class="small opacity-75">District Agri Office, Pune</p>
+      </div>
+      <div class="card border-0 shadow-sm rounded-4 p-4 mt-3">
+        <h6 class="fw-bold"><i class="bi bi-info-circle me-2 text-success"></i>Demo Logins</h6>
+        <div class="small">
+          <div><strong>Admin:</strong> admin / admin123</div>
+          <div><strong>Farmer:</strong> ramesh / farmer123</div>
+          <div class="text-muted mt-2">Change password after first login for security.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

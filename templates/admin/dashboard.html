@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block head %}<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>{% endblock %}
+{% block content %}
+<div class="container-fluid py-4" style="max-width:1300px;">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+      <h3 class="fw-bold mb-1"><i class="bi bi-shield-check text-success me-2"></i>Admin Control Centre</h3>
+      <p class="text-muted small mb-0">Monitor farmer distress reports • Verify • Approve • Initiate compensation — enterprise overview</p>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="{{ url_for('admin_reports') }}" class="btn btn-success fw-semibold"><i class="bi bi-list-check me-1"></i> View All Reports</a>
+      <button class="btn btn-outline-secondary" onclick="window.print()"><i class="bi bi-printer"></i> Print</button>
+    </div>
+  </div>
+
+  <!-- KPI -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-2"><div class="card border-0 shadow-sm rounded-4 p-3 text-center"><div class="small text-muted">Total</div><div class="fs-2 fw-bold">{{ stats.total }}</div><div class="small text-success">All reports</div></div></div>
+    <div class="col-6 col-md-2"><div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-warning-subtle"><div class="small text-muted">Pending</div><div class="fs-2 fw-bold text-warning-emphasis">{{ stats.pending }}</div><div class="small">Needs review</div></div></div>
+    <div class="col-6 col-md-2"><div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-info-subtle"><div class="small text-muted">Verified</div><div class="fs-2 fw-bold text-info-emphasis">{{ stats.verified }}</div><div class="small">Field checked</div></div></div>
+    <div class="col-6 col-md-2"><div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-success-subtle"><div class="small text-muted">Approved</div><div class="fs-2 fw-bold text-success">{{ stats.approved }}</div><div class="small">Compensation OK</div></div></div>
+    <div class="col-6 col-md-2"><div class="card border-0 shadow-sm rounded-4 p-3 text-center"><div class="small text-muted">Rejected</div><div class="fs-2 fw-bold text-danger">{{ stats.rejected }}</div></div></div>
+    <div class="col-6 col-md-2"><div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-dark text-white"><div class="small opacity-75">DBT Initiated</div><div class="fs-2 fw-bold text-warning">{{ stats.compensated }}</div></div></div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+          <h6 class="fw-bold mb-0">Pending Verification Queue</h6>
+          <a href="{{ url_for('admin_reports') }}?status=Pending" class="btn btn-sm btn-outline-warning">View all pending</a>
+        </div>
+        <div class="card-body p-0">
+          {% if pending_reports %}
+          <div class="table-responsive">
+            <table class="table align-middle small mb-0">
+              <thead class="table-light"><tr><th>ID</th><th>Farmer</th><th>Crop / Damage</th><th>Location</th><th>Severity</th><th>Action</th></tr></thead>
+              <tbody>
+              {% for r in pending_reports %}
+                <tr>
+                  <td>#{{ r.id }}</td>
+                  <td class="fw-semibold">{{ r.farmer_name }}<div class="text-muted small">{{ r.mobile }}</div></td>
+                  <td>{{ r.crop_type }}<div class="text-muted">{{ r.damage_type }}</div></td>
+                  <td>{{ r.village }}, {{ r.district }}</td>
+                  <td><span class="badge bg-{{ 'danger' if r.severity=='Severe' else 'warning text-dark' if r.severity=='High' else 'secondary' }}">{{ r.severity }}</span></td>
+                  <td><a href="{{ url_for('admin_report_detail', report_id=r.id) }}" class="btn btn-success btn-sm">Review</a></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% else %}
+            <div class="text-center py-4 text-muted small">No pending reports — great job!</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm rounded-4 mb-3">
+        <div class="card-body">
+          <h6 class="fw-bold">Damage Type Breakdown</h6>
+          <canvas id="typeChart" height="200"></canvas>
+        </div>
+      </div>
+      <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body">
+          <h6 class="fw-bold">Severity Distribution</h6>
+          <canvas id="severityChart" height="200"></canvas>
+          {% if district_data %}
+          <hr><h6 class="fw-bold small">Top Districts</h6>
+          <ul class="small mb-0">
+            {% for d,c in district_data %}<li>{{ d }}: <strong>{{ c }}</strong> reports</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+const typeCounts = {{ stats.type_counts | tojson }};
+const severityCounts = {{ severity_counts | tojson }};
+new Chart(document.getElementById('typeChart'), {
+  type:'doughnut',
+  data:{labels:Object.keys(typeCounts), datasets:[{data:Object.values(typeCounts), backgroundColor:['#198754','#0dcaf0','#ffc107','#dc3545','#6c757d','#fd7e14','#20c997']}]},
+  options:{plugins:{legend:{position:'bottom'}}}
+});
+new Chart(document.getElementById('severityChart'), {
+  type:'bar',
+  data:{labels:Object.keys(severityCounts), datasets:[{label:'Reports', data:Object.values(severityCounts), backgroundColor:'#198754'}]},
+  options:{plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true, ticks:{precision:0}}}}
+});
+</script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Admin Login{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="text-center mb-4">
+        <div class="mx-auto bg-dark text-white rounded-circle d-flex align-items-center justify-content-center mb-2" style="width:56px;height:56px;"><i class="bi bi-shield-lock fs-4"></i></div>
+        <h3 class="fw-bold">Admin Login</h3>
+        <p class="text-muted small">District Agriculture Office • Demo: <strong>admin / admin123</strong></p>
+      </div>
+      <div class="card border-0 shadow-lg rounded-4">
+        <div class="card-body p-4 p-md-5">
+          <form method="POST">
+            <label class="form-label fw-semibold small">Admin Username / Email</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="bi bi-person-gear"></i></span>
+              <input name="username" class="form-control form-control-lg" required placeholder="admin">
+            </div>
+            <label class="form-label fw-semibold small">Password</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="bi bi-key"></i></span>
+              <input name="password" type="password" class="form-control form-control-lg" required placeholder="admin123">
+            </div>
+            <button class="btn btn-dark btn-lg w-100 fw-bold" type="submit"><i class="bi bi-box-arrow-in-right me-2"></i>Login to Admin Panel</button>
+          </form>
+        </div>
+      </div>
+      <div class="alert alert-light border mt-3 small text-center">Farmer? <a href="{{ url_for('farmer_login') }}" class="fw-bold">Go to Farmer Login</a></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
