@@ -110,11 +110,11 @@ main{ display:flow-root; }
 /* ALERTS — two colour */
 .alert{ border:1.5px solid var(--green)!important; background:var(--snow)!important; color:var(--green)!important; border-radius:var(--r-md)!important;}
 .badge{ font-size:var(--fs-xs); border-radius:var(--r-pill); }
-/* Remember me — 24px hit target */
-.form-check-input[type="checkbox"]{ width:22px; height:22px; margin-top:0; border:1.5px solid var(--green); border-radius:4px; flex-shrink:0;}
+/* Remember me / Agree — 24px hit target, aligned to first line */
+.form-check{ display:flex; align-items:flex-start; gap:10px; min-height:24px; }
+.form-check-input[type="checkbox"]{ width:22px; height:22px; margin-top:0.2em; border:1.5px solid var(--green); border-radius:4px; flex-shrink:0;}
 .form-check-input[type="checkbox"]:checked{ background-color:var(--green); border-color:var(--green);}
-.form-check{ min-height:24px; display:flex; align-items:center; gap:8px; }
-.form-check-label{ padding-left:2px; cursor:pointer; line-height:1.2; }
+.form-check-label{ padding-left:2px; cursor:pointer; line-height:1.5; flex:1; }
 /* Radii system — normalize Bootstrap defaults to 2-colour tokens (≤6 distinct) */
 .card, .card-body, .alert, .form-control, .input-group-text, .btn{ border-radius:var(--r-md)!important; }
 .rounded-4{ border-radius:var(--r-lg)!important; }
@@ -135,6 +135,17 @@ main{ display:flow-root; }
 
 /* Clamp for truncated */
 .clamp-3{ display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+/* Autofill — force snow white, not blue */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+  -webkit-box-shadow:0 0 0 1000px var(--snow) inset !important;
+  -webkit-text-fill-color:var(--green) !important;
+  caret-color:var(--green);
+  transition:background-color 9999s ease-out 0s;
+}
+input.form-control, select.form-select{ background-color:var(--snow)!important; }
 
 /* MOBILE */
 @media(max-width:991px){ .hero-title{ font-size:var(--fs-2xl); } }

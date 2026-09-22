@@ -5,8 +5,8 @@
   <div class="row justify-content-center">
     <div class="col-lg-7">
       <div class="text-center mb-4">
-        <div class="mx-auto bg-success text-white rounded-circle d-flex align-items-center justify-content-center mb-2" style="width:56px;height:56px;"><i class="bi bi-person-plus fs-4"></i></div>
-        <h3 class="fw-bold">Create Farmer Account</h3>
+        <div class="mx-auto rounded-circle d-flex align-items-center justify-content-center mb-2" style="width:56px;height:56px; background:var(--green); color:var(--snow);" aria-hidden="true"><i class="bi bi-person-plus fs-4"></i></div>
+        <h1 class="h3 fw-bold">Create Farmer Account</h1>
         <p class="text-muted small">Free, 30 seconds. Get instant access to damage reporting. No fees, No agent needed.</p>
       </div>
       <div class="card border-0 shadow-lg rounded-4">
@@ -18,11 +18,8 @@
                 <input name="username" class="form-control form-control-lg" placeholder="e.g., Ramesh Patil" required>
               </div>
               <div class="col-md-6">
-                <label class="form-label fw-semibold small">Mobile Number *</label>
-                <div class="input-group">
-                  <span class="input-group-text">+91</span>
-                  <input name="mobile" class="form-control form-control-lg" placeholder="9876543210" pattern="[0-9]{10}">
-                </div>
+                <label class="form-label fw-semibold small" for="mobile">Mobile Number *</label>
+                <input name="mobile" id="mobile" type="tel" class="form-control form-control-lg" placeholder="+91  9876543210" pattern="(\+91\s?)?[0-9]{10}" aria-label="Mobile number with country code +91">
               </div>
               <div class="col-md-6">
                 <label class="form-label fw-semibold small">Email *</label>
