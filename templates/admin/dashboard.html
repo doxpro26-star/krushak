@@ -5,7 +5,7 @@
 <div class="container-fluid py-4" style="max-width:1300px;">
   <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
     <div>
-      <h3 class="fw-bold mb-1"><i class="bi bi-shield-check text-success me-2"></i>Admin Control Centre</h3>
+      <h1 class="h3 fw-bold mb-1"><i class="bi bi-shield-check text-success me-2" aria-hidden="true"></i>Admin Control Centre</h1>
       <p class="text-muted small mb-0">Monitor farmer distress reports • Verify • Approve • Initiate compensation — enterprise overview</p>
     </div>
     <div class="d-flex gap-2">
@@ -26,10 +26,10 @@
 
   <div class="row g-3">
     <div class="col-lg-8">
-      <div class="card border-0 shadow-sm rounded-4 h-100">
-        <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
-          <h6 class="fw-bold mb-0">Pending Verification Queue</h6>
-          <a href="{{ url_for('admin_reports') }}?status=Pending" class="btn btn-sm btn-outline-warning">View all pending</a>
+      <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center" style="border-radius:16px 16px 0 0;">
+          <h2 class="h6 fw-bold mb-0">Pending Verification Queue</h2>
+          <a href="{{ url_for('admin_reports') }}?status=Pending" class="btn btn-sm" style="background:var(--snow); color:var(--green); border:1.5px solid var(--green); border-radius:999px; font-weight:700;">View all pending</a>
         </div>
         <div class="card-body p-0">
           {% if pending_reports %}
@@ -44,7 +44,7 @@
                   <td>{{ r.crop_type }}<div class="text-muted">{{ r.damage_type }}</div></td>
                   <td>{{ r.village }}, {{ r.district }}</td>
                   <td><span class="badge bg-{{ 'danger' if r.severity=='Severe' else 'warning text-dark' if r.severity=='High' else 'secondary' }}">{{ r.severity }}</span></td>
-                  <td><a href="{{ url_for('admin_report_detail', report_id=r.id) }}" class="btn btn-success btn-sm">Review</a></td>
+                  <td><a href="{{ url_for('admin_report_detail', report_id=r.id) }}" class="btn btn-sm" style="background:var(--snow); color:var(--green); border:1.5px solid var(--green); border-radius:999px; font-weight:600;" aria-label="Review report {{ r.id }}">Review</a></td>
                 </tr>
               {% endfor %}
               </tbody>
@@ -59,17 +59,17 @@
     <div class="col-lg-4">
       <div class="card border-0 shadow-sm rounded-4 mb-3">
         <div class="card-body">
-          <h6 class="fw-bold">Damage Type Breakdown</h6>
-          <canvas id="typeChart" height="200"></canvas>
+          <h3 class="h6 fw-bold">Damage Type Breakdown</h3>
+          <canvas id="typeChart" height="200" aria-label="Damage type breakdown chart" role="img"></canvas>
         </div>
       </div>
       <div class="card border-0 shadow-sm rounded-4">
         <div class="card-body">
-          <h6 class="fw-bold">Severity Distribution</h6>
-          <canvas id="severityChart" height="200"></canvas>
+          <h3 class="h6 fw-bold">Severity Distribution</h3>
+          <canvas id="severityChart" height="200" aria-label="Severity distribution chart" role="img"></canvas>
           {% if district_data %}
-          <hr><h6 class="fw-bold small">Top Districts</h6>
-          <ul class="small mb-0">
+          <hr class="my-4"><h3 class="h6 fw-bold small mt-4">Top Districts</h3>
+          <ul class="small mb-0 ps-3">
             {% for d,c in district_data %}<li>{{ d }}: <strong>{{ c }}</strong> reports</li>{% endfor %}
           </ul>
           {% endif %}
