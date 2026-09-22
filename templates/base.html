@@ -12,7 +12,7 @@
 <body>
 <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-3" href="{{ url_for('index') }}">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('index') }}">
       <span class="brand-icon"><i class="bi bi-flower1"></i></span>
       <span class="brand-text">Krushak</span>
       <span class="brand-badge">GOVT • 2026</span>
@@ -32,25 +32,27 @@
             <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_dashboard') }}" data-i18n="nav_admin"><i class="bi bi-shield-check me-1"></i>Admin Panel</a></li>
           {% endif %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="bi bi-person-circle me-1"></i>{{ current_user.username }}</a>
-            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-              <li><span class="dropdown-item-text small text-muted">{{ current_user.role|upper }} • {{ current_user.district }}</span></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle me-1"></i>{{ current_user.username }}
+            </a>
+            <ul class="dropdown-menu" style="background:var(--snow); border:1.5px solid var(--green);">
+              <li><span class="dropdown-item-text small" style="color:var(--green);">{{ current_user.role|upper }} • {{ current_user.district }}</span></li>
+              <li><hr class="dropdown-divider" style="border-color:var(--green); opacity:.2;"></li>
+              <li><a class="dropdown-item" href="{{ url_for('logout') }}" style="color:var(--green);"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
             </ul>
           </li>
         {% else %}
           <li class="nav-item"><a class="nav-link" href="{{ url_for('farmer_login') }}" data-i18n="nav_farmer_login">Farmer Login</a></li>
           <li class="nav-item ms-lg-1"><a class="btn btn-outline-nav" href="{{ url_for('farmer_register') }}" data-i18n="nav_farmer_register">Farmer Register</a></li>
-          <li class="nav-item"><a class="nav-link small opacity-75" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short">Admin</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short">Admin</a></li>
         {% endif %}
         <li class="nav-item ms-lg-2">
           <div class="dropdown">
             <button class="btn btn-lang dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-translate me-1"></i><span class="lang-label">EN</span></button>
-            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-              <li><a class="dropdown-item lang-opt active" href="#" data-lang="en" onclick="setLang('en');return false;">English</a></li>
-              <li><a class="dropdown-item lang-opt" href="#" data-lang="mr" onclick="setLang('mr');return false;">मराठी</a></li>
-              <li><a class="dropdown-item lang-opt" href="#" data-lang="hi" onclick="setLang('hi');return false;">हिंदी</a></li>
+            <ul class="dropdown-menu dropdown-menu-end" style="background:var(--snow); border:1.5px solid var(--green);">
+              <li><a class="dropdown-item lang-opt active" href="#" data-lang="en" onclick="setLang('en');return false;" style="color:var(--green);">English</a></li>
+              <li><a class="dropdown-item lang-opt" href="#" data-lang="mr" onclick="setLang('mr');return false;" style="color:var(--green);">मराठी</a></li>
+              <li><a class="dropdown-item lang-opt" href="#" data-lang="hi" onclick="setLang('hi');return false;" style="color:var(--green);">हिंदी</a></li>
             </ul>
           </div>
         </li>
@@ -63,7 +65,7 @@
   {% if messages %}
     <div class="container mt-3">
       {% for category, msg in messages %}
-        <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm border-0" role="alert">{{ msg }}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+        <div class="alert alert-dismissible fade show" role="alert">{{ msg }}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
       {% endfor %}
     </div>
   {% endif %}
@@ -71,20 +73,20 @@
 
 <main>{% block content %}{% endblock %}</main>
 
-<footer class="footer-clean">
+<footer class="footer-two">
   <div class="container">
     <div class="row g-4">
       <div class="col-lg-4">
         <div class="d-flex align-items-center gap-2 mb-3">
           <span class="brand-icon"><i class="bi bi-flower1"></i></span>
-          <span class="fw-bold" style="color:white; font-family:Poppins,sans-serif;">Krushak</span>
-          <span class="brand-badge">ENTERPRISE</span>
+          <span class="fw-bold" style="color:var(--snow); font-family:Poppins,sans-serif;">Krushak</span>
+          <span class="brand-badge" style="background:var(--snow); color:var(--green);">GOVT • 2026</span>
         </div>
-        <p class="small" style="color:#BDC1C6;">Clean, farm-first platform for Monsoon, Flood, Pollution, Drought & Pest. Simple 2-minute reporting, direct DBT.</p>
+        <p class="small muted">Clean farm platform — Monsoon, Flood, Pollution, Drought & Pest. 2-minute reporting, direct DBT.</p>
         <p class="small mb-0"><i class="bi bi-telephone me-2"></i>1800-180-1551 • <i class="bi bi-envelope ms-2"></i> help@krushak.gov.in</p>
       </div>
       <div class="col-6 col-lg-2">
-        <h6 class="small fw-bold" style="color:var(--light2);">QUICK LINKS</h6>
+        <h6 class="small fw-bold" style="letter-spacing:.4px;">QUICK LINKS</h6>
         <ul class="list-unstyled small">
           <li><a href="{{ url_for('farmer_register') }}">Farmer Registration</a></li>
           <li><a href="{{ url_for('farmer_report_new') }}">Report Damage</a></li>
@@ -93,15 +95,15 @@
         </ul>
       </div>
       <div class="col-6 col-lg-3">
-        <h6 class="small fw-bold" style="color:var(--light2);">DAMAGE COVERED</h6>
+        <h6 class="small fw-bold">DAMAGE COVERED</h6>
         <div class="d-flex flex-wrap gap-2">
-          <span class="badge bg-white text-dark">Heavy Monsoon</span><span class="badge bg-white text-dark">Flood</span><span class="badge bg-white text-dark">Drought</span><span class="badge bg-white text-dark">Pollution</span>
+          <span class="tag-two">Heavy Monsoon</span><span class="tag-two">Flood</span><span class="tag-two">Drought</span><span class="tag-two">Pollution</span>
         </div>
       </div>
       <div class="col-lg-3 text-lg-end">
-        <div class="small" style="color:#9AA0A6;">Verified by</div>
-        <div class="fw-bold" style="color:white;">Ministry of Agriculture<br>& Farmers Welfare</div>
-        <div class="mt-2 small" style="color:#80868B;">© 2026 Krushak • For farmers, by Krushak</div>
+        <div class="small muted">Verified by</div>
+        <div class="fw-bold">Ministry of Agriculture<br>& Farmers Welfare</div>
+        <div class="mt-2 small muted">© 2026 Krushak</div>
       </div>
     </div>
   </div>
