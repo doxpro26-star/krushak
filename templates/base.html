@@ -25,8 +25,8 @@
     </button>
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item"><a class="nav-link active" href="{{ url_for('index') }}" data-i18n="nav_home"><i class="bi bi-house-door me-1"></i>Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}" data-i18n="nav_about">About Scheme</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}" data-i18n="nav_home" {% if request.endpoint == 'index' %}aria-current="page"{% endif %}><i class="bi bi-house-door me-1"></i>Home</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}" href="{{ url_for('about') }}" data-i18n="nav_about" {% if request.endpoint == 'about' %}aria-current="page"{% endif %}>About Scheme</a></li>
         {% if current_user.is_authenticated %}
           {% if current_user.role=='farmer' %}
             <li class="nav-item"><a class="nav-link" href="{{ url_for('farmer_dashboard') }}" data-i18n="nav_dashboard"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
@@ -45,9 +45,9 @@
             </ul>
           </li>
         {% else %}
-          <li class="nav-item"><a class="btn btn-outline-nav" href="{{ url_for('farmer_login') }}" data-i18n="nav_farmer_login">Farmer Login</a></li>
-          <li class="nav-item ms-lg-1"><a class="btn btn-primary-nav" href="{{ url_for('farmer_register') }}" data-i18n="nav_farmer_register">Farmer Register</a></li>
-          <li class="nav-item"><a class="nav-link small" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short" style="opacity:.65;">Admin</a></li>
+          <li class="nav-item"><a class="btn btn-outline-nav {% if request.endpoint == 'farmer_login' %}active{% endif %}" href="{{ url_for('farmer_login') }}" data-i18n="nav_farmer_login" {% if request.endpoint == 'farmer_login' %}aria-current="page"{% endif %}>Farmer Login</a></li>
+          <li class="nav-item ms-lg-1"><a class="btn btn-primary-nav {% if request.endpoint == 'farmer_register' %}active{% endif %}" href="{{ url_for('farmer_register') }}" data-i18n="nav_farmer_register" {% if request.endpoint == 'farmer_register' %}aria-current="page"{% endif %}>Farmer Register</a></li>
+          <li class="nav-item"><a class="nav-link small {% if request.endpoint == 'admin_login' %}active{% endif %}" href="{{ url_for('admin_login') }}" data-i18n="nav_admin_short" {% if request.endpoint == 'admin_login' %}aria-current="page"{% endif %}>Admin</a></li>
         {% endif %}
         <li class="nav-item ms-lg-2">
           <div class="dropdown">
@@ -99,7 +99,7 @@
       </div>
       <div class="col-6 col-lg-3">
         <h3 class="h6 small fw-bold">DAMAGE COVERED</h3>
-        <div class="d-flex flex-wrap gap-2">
+        <div class="d-flex flex-wrap align-items-start" style="gap:8px;">
           <span class="tag-two">Heavy Monsoon</span><span class="tag-two">Flood</span><span class="tag-two">Drought</span><span class="tag-two">Pollution</span>
         </div>
       </div>

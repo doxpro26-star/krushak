@@ -108,6 +108,14 @@ main{ display:flow-root; }
 /* ALERTS — two colour */
 .alert{ border:1.5px solid var(--green)!important; background:var(--snow)!important; color:var(--green)!important; border-radius:var(--r-md)!important;}
 .badge{ font-size:var(--fs-xs); border-radius:var(--r-pill); }
+/* Radii system — normalize Bootstrap defaults to 2-colour tokens (≤6 distinct) */
+.card, .card-body, .alert, .form-control, .input-group-text, .btn{ border-radius:var(--r-md)!important; }
+.rounded-4{ border-radius:var(--r-lg)!important; }
+.rounded-pill{ border-radius:var(--r-pill)!important; }
+.rounded-circle{ border-radius:50%!important; }
+/* Input icon spacing — issue 7 */
+.input-group-text{ padding-right:14px; }
+.input-group .form-control{ padding-left:14px; }
 /* Non-interactive informational badges — distinct from buttons (no border pill) */
 .badge-info{ background:var(--green-light); color:var(--green); border:none; padding:6px 10px; border-radius:8px; font-weight:600; font-size:var(--fs-xs); display:inline-flex; align-items:center; justify-content:center; }
 
