@@ -34,19 +34,7 @@
   </div>
 </section>
 
-<!-- TRUST — GREEN BAR -->
-<section class="trust-two">
-  <div class="container">
-    <div class="row g-0">
-      <div class="col-6 col-md-3 item"><i class="bi bi-patch-check-fill"></i> <span data-i18n="trust1">Verified by Agri Dept</span></div>
-      <div class="col-6 col-md-3 item"><i class="bi bi-shield-lock"></i> <span data-i18n="trust2">Aadhaar-safe, Data encrypted</span></div>
-      <div class="col-6 col-md-3 item"><i class="bi bi-phone"></i> <span data-i18n="trust3">Works on any phone</span></div>
-      <div class="col-6 col-md-3 item"><i class="bi bi-lightning-charge"></i> <span data-i18n="trust4">Takes only 2 mins</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
+<!-- HOW IT WORKS — moved immediately after hero for logical flow -->
 <section class="py-5 section-two">
   <div class="container">
     <div class="text-center mb-5" style="max-width:680px; margin:0 auto;">
@@ -58,6 +46,18 @@
       <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-person-plus"></i></div><h3 class="h5 fw-bold" data-i18n="how1_t">1. Register / Login</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how1_d">Mobile + Village + District. One-time. Username also works.</p><span class="badge-info mx-auto" data-i18n="how1_b">30 seconds</span></div></div>
       <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-camera"></i></div><h3 class="h5 fw-bold" data-i18n="how2_t">2. Report Damage</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how2_d">Select Monsoon / Pollution / Flood. Add crop, farm size, 1 photo.</p><span class="badge-info mx-auto" data-i18n="how2_b">2 minutes</span></div></div>
       <div class="col-md-4"><div class="card-two h-100"><div class="icon-two" aria-hidden="true"><i class="bi bi-bell"></i></div><h3 class="h5 fw-bold" data-i18n="how3_t">3. Track & Get Help</h3><p class="small" style="color:rgba(27,122,59,0.68);" data-i18n="how3_d">Pending → Verified → Approved. SMS + Compensation to account.</p><span class="badge-info mx-auto" data-i18n="how3_b">24–48 hours</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST — GREEN BAR — placed after How for logical flow (context before trust) -->
+<section class="trust-two" aria-label="Trust indicators">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-6 col-md-3 item"><i class="bi bi-patch-check-fill" aria-hidden="true"></i> <span data-i18n="trust1">Verified by Agri Dept</span></div>
+      <div class="col-6 col-md-3 item"><i class="bi bi-shield-lock" aria-hidden="true"></i> <span data-i18n="trust2">Aadhaar-safe, Data encrypted</span></div>
+      <div class="col-6 col-md-3 item"><i class="bi bi-phone" aria-hidden="true"></i> <span data-i18n="trust3">Works on any phone</span></div>
+      <div class="col-6 col-md-3 item"><i class="bi bi-lightning-charge" aria-hidden="true"></i> <span data-i18n="trust4">Takes only 2 mins</span></div>
     </div>
   </div>
 </section>
@@ -87,7 +87,7 @@
     <h5 class="fw-bold mb-3 text-center" data-i18n="recent_title">Recent Reports (anonymized)</h5>
     <div class="row g-3 justify-content-center">
       {% for r in recent %}
-      <div class="col-md-8 col-lg-6"><div class="card-two recent-card" style="text-align:left; max-width:640px; margin:0 auto;"><div class="d-flex justify-content-between"><span class="{% if r.status=='Pending' %}badge-status-pending{% else %}badge-status-success{% endif %}" style="padding:4px 10px; border-radius:999px; font-weight:700; font-size:var(--fs-xs);">{{ r.status }}</span><small style="opacity:.6;">{{ r.created_at.strftime('%d %b %Y') }}</small></div><h6 class="fw-bold mt-2 mb-1">{{ r.crop_type }} • {{ r.damage_type }}</h6><div class="small" style="opacity:.7;"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ r.village }}, {{ r.district }} • {{ r.farm_size }} acre • {{ r.severity }}</div><p class="small mt-2 mb-0 clamp-3" title="{{ r.description }}">{{ r.description }}</p></div></div>
+      <div class="col-12 col-md-10 col-lg-8 d-flex justify-content-center"><div class="card-two recent-card" style="text-align:left; width:100%; max-width:600px;"><div class="d-flex justify-content-between"><span class="{% if r.status=='Pending' %}badge-status-pending{% else %}badge-status-success{% endif %}" style="padding:4px 10px; border-radius:999px; font-weight:700; font-size:var(--fs-xs);">{{ r.status }}</span><small style="opacity:.6;">{{ r.created_at.strftime('%d %b %Y') }}</small></div><h6 class="fw-bold mt-2 mb-1">{{ r.crop_type }} • {{ r.damage_type }}</h6><div class="small" style="opacity:.7;"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i>{{ r.village }}, {{ r.district }} • {{ r.farm_size }} acre • {{ r.severity }}</div><p class="small mt-2 mb-0 clamp-3" title="{{ r.description }}">{{ r.description }}</p></div></div>
       {% endfor %}
     </div>
   </div>
