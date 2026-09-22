@@ -36,7 +36,7 @@
           {% endif %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-1"></i>{{ current_user.username }}
+              <i class="bi bi-person-circle me-1"></i>{{ current_user.username|capitalize }}
             </a>
             <ul class="dropdown-menu" style="background:var(--snow); border:1.5px solid var(--green);">
               <li><span class="dropdown-item-text small" style="color:var(--green);">{{ current_user.role|upper }} • {{ current_user.district }}</span></li>
@@ -99,11 +99,11 @@
       </div>
       <div class="col-6 col-lg-3">
         <h2 class="h6 small fw-bold">DAMAGE COVERED</h2>
-        <ul class="list-unstyled small" style="display:flex; flex-direction:column; gap:8px; align-items:flex-start;">
-          <li><span class="tag-two" style="justify-content:flex-start; text-align:left;">Heavy Monsoon</span></li>
-          <li><span class="tag-two" style="justify-content:flex-start; text-align:left;">Flood</span></li>
-          <li><span class="tag-two" style="justify-content:flex-start; text-align:left;">Drought</span></li>
-          <li><span class="tag-two" style="justify-content:flex-start; text-align:left;">Pollution</span></li>
+        <ul class="list-unstyled small">
+          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;">Heavy Monsoon</a></li>
+          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;">Flood</a></li>
+          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;">Drought</a></li>
+          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;">Pollution</a></li>
         </ul>
       </div>
       <div class="col-lg-3 text-lg-end">
