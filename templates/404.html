@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container py-5 text-center">
   <h1 class="display-1 fw-bold text-success">404</h1>
-  <p class="lead">Page not found — maybe the crop field moved?</p>
-  <a href="{{ url_for('index') }}" class="btn btn-success">Go Home</a>
+  <p class="lead" data-i18n="notfound_desc">Page not found — maybe the crop field moved?</p>
+  <a href="{{ url_for('index') }}" class="btn btn-success" data-i18n="notfound_btn">Go Home</a>
 </div>
 {% endblock %}

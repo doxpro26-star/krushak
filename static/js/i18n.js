@@ -53,7 +53,84 @@ const TRANSLATIONS = {
     cta_sub: "Join farmers who already reported. Takes only 2 minutes. Helpline always open.",
     cta_btn: "Create Free Farmer Account",
     cta_login: "Already have account? Login here",
-    cta_admin: "Admin login"
+    cta_admin: "Admin login",
+    // auth
+    login_title: "Farmer Login",
+    login_sub: "Use Username or Email. Demo: ramesh / farmer123",
+    login_user: "Username or Email",
+    login_pass: "Password",
+    login_remember: "Remember me",
+    login_forgot: "Forgot? Call helpline",
+    login_submit: "Login to Dashboard",
+    login_reg: "New farmer? Register in 30 sec",
+    login_admin: "Are you Admin? Login here",
+    reg_title: "Create Farmer Account",
+    reg_sub: "Free, 30 seconds. Get instant access to damage reporting.",
+    reg_name: "Full Name / Username *",
+    reg_mobile: "Mobile Number *",
+    reg_email: "Email *",
+    reg_pass: "Password *",
+    reg_village: "Village *",
+    reg_district: "District *",
+    reg_agree: "I confirm I am a farmer and information is true. I agree to verification by Agri Dept.",
+    reg_submit: "Create Account — It's Free",
+    reg_login: "Already have account? Login here",
+    reg_help: "Need help? Call 1800-180-1551 — we will register for you.",
+    // farmer dash
+    dash_welcome: "Welcome",
+    dash_pending: "Pending Review",
+    dash_total: "Total Reports",
+    dash_approved: "Approved",
+    dash_help: "Need Help?",
+    dash_my: "My Damage Reports",
+    dash_no: "No reports yet",
+    dash_no_sub: "Click Report New Damage to raise your first request. Takes 2 minutes.",
+    dash_start: "Start Reporting",
+    dash_tip: "Farmer Tip: Take photo from 2–3 angles, include nearby landmark. Clear photo = faster verification.",
+    // report
+    report_title: "Report Crop Damage — Simple Form",
+    report_farmer: "Farmer & Field Info",
+    report_crop: "Crop & Damage Details",
+    report_submit: "Submit Damage Report",
+    // admin
+    admin_title: "Admin Control Centre",
+    admin_sub: "Monitor farmer distress reports • Verify • Approve • Initiate compensation — enterprise overview",
+    admin_pending: "Pending Verification Queue",
+    admin_view: "View all pending",
+    admin_type: "Damage Type Breakdown",
+    admin_sev: "Severity Distribution",
+    admin_top: "Top Districts",
+    admin_all: "All Damage Reports",
+    admin_filter: "Filter",
+    admin_reset: "Reset",
+    admin_manage: "Manage",
+    admin_action: "Admin Action — Update Status",
+    admin_save: "Save Update & Notify Farmer",
+    // about
+    about_title: "Krushak — Crop Damage Relief Scheme",
+    about_sub: "Enterprise platform connecting farmers directly to District Agriculture Office. No middleman, transparent tracking.",
+    about_who: "Who can apply?",
+    about_docs: "Documents needed",
+    about_flow: "Compensation flow",
+    about_contact: "Contact Support",
+    about_demo: "Demo Logins",
+    // footer
+    footer_desc: "Clean farm platform — Monsoon, Flood, Pollution, Drought & Pest. 2-minute reporting, direct DBT.",
+    footer_quick: "QUICK LINKS",
+    footer_ql1: "Farmer Registration",
+    footer_ql2: "Report Crop Damage",
+    footer_ql3: "Admin Login",
+    footer_ql4: "Scheme & Compensation",
+    footer_damage: "DAMAGE COVERED",
+    footer_verified: "Verified by",
+    footer_ministry: "Ministry of Agriculture<br>& Farmers Welfare",
+    footer_copy: "© 2026 Krushak",
+    notfound_desc: "Page not found — maybe the crop field moved?",
+    notfound_btn: "Go Home",
+    // common
+    logout: "Logout",
+    back: "Back",
+    government: "Government of India • Direct Benefit Transfer"
   },
   mr: {
     nav_home: "मुख्यपृष्ठ",
@@ -108,7 +185,77 @@ const TRANSLATIONS = {
     cta_sub: "आधीच नोंदणी केलेल्या शेतकऱ्यांमध्ये सामील व्हा. फक्त २ मिनिटे. हेल्पलाइन नेहमी सुरू.",
     cta_btn: "मोफत शेतकरी खाते तयार करा",
     cta_login: "आधीच खाते आहे? लॉगिन करा",
-    cta_admin: "अॅडमिन लॉगिन"
+    cta_admin: "अॅडमिन लॉगिन",
+    login_title: "शेतकरी लॉगिन",
+    login_sub: "युजरनेम किंवा ईमेल वापरा. डेमो: ramesh / farmer123",
+    login_user: "युजरनेम किंवा ईमेल",
+    login_pass: "पासवर्ड",
+    login_remember: "लक्षात ठेवा",
+    login_forgot: "विसरलात? हेल्पलाइनला कॉल करा",
+    login_submit: "डॅशबोर्डवर लॉगिन करा",
+    login_reg: "नवीन शेतकरी? ३० सेकंदात नोंदणी",
+    login_admin: "तुम्ही अॅडमिन आहात? लॉगिन करा",
+    reg_title: "शेतकरी खाते तयार करा",
+    reg_sub: "मोफत, ३० सेकंद. नुकसान कळवण्यास झटपट प्रवेश.",
+    reg_name: "पूर्ण नाव / युजरनेम *",
+    reg_mobile: "मोबाइल नंबर *",
+    reg_email: "ईमेल *",
+    reg_pass: "पासवर्ड *",
+    reg_village: "गाव *",
+    reg_district: "जिल्हा *",
+    reg_agree: "मी शेतकरी असल्याचे आणि माहिती खरी असल्याचे मान्य करतो. पडताळणीस संमती.",
+    reg_submit: "खाते तयार करा — मोफत",
+    reg_login: "आधीच खाते आहे? येथे लॉगिन करा",
+    reg_help: "मदत हवी? १८००-१८०-१५५१ ला कॉल करा — आम्ही नोंदणी करून देऊ.",
+    dash_welcome: "नमस्कार",
+    dash_pending: "प्रलंबित",
+    dash_total: "एकूण अहवाल",
+    dash_approved: "मंजूर",
+    dash_help: "मदत हवी?",
+    dash_my: "माझे नुकसान अहवाल",
+    dash_no: "अजून अहवाल नाही",
+    dash_no_sub: "नवा अहवाल कळवण्यासाठी बटण दाबा. २ मिनिटे लागतात.",
+    dash_start: "कळवायला सुरुवात करा",
+    dash_tip: "टिप: २-३ कोनातून फोटो घ्या, खूण समाविष्ट करा. स्पष्ट फोटो = जलद पडताळणी.",
+    report_title: "पिक नुकसान कळवा — सोपा फॉर्म",
+    report_farmer: "शेतकरी व शेत माहिती",
+    report_crop: "पीक व नुकसान तपशील",
+    report_submit: "अहवाल सादर करा",
+    admin_title: "प्रशासन केंद्र",
+    admin_sub: "शेतकरी अहवालांवर लक्ष • पडताळा • मंजूर करा",
+    admin_pending: "प्रलंबित रांग",
+    admin_view: "सर्व प्रलंबित पहा",
+    admin_type: "नुकसान प्रकार",
+    admin_sev: "तीव्रता वितरण",
+    admin_top: "टॉप जिल्हे",
+    admin_all: "सर्व अहवाल",
+    admin_filter: "फिल्टर",
+    admin_reset: "रिसेट",
+    admin_manage: "व्यवस्थापित करा",
+    admin_action: "प्रशासन क्रिया — स्थिती बदला",
+    admin_save: "जतन करा व शेतकऱ्याला कळवा",
+    about_title: "कृषक — पीक नुकसान भरपाई योजना",
+    about_sub: "शेतकऱ्यांना थेट कृषी कार्यालयाशी जोडणारे व्यासपीठ.",
+    about_who: "कोण अर्ज करू शकतो?",
+    about_docs: "आवश्यक कागदपत्रे",
+    about_flow: "भरपाई प्रक्रिया",
+    about_contact: "संपर्क",
+    about_demo: "डेमो लॉगिन",
+    footer_desc: "स्वच्छ शेत व्यासपीठ — पाऊस, पूर, प्रदूषण, दुष्काळ, कीड. २ मिनिट अहवाल, थेट DBT.",
+    footer_quick: "जलद दुवे",
+    footer_ql1: "शेतकरी नोंदणी",
+    footer_ql2: "नुकसान कळवा",
+    footer_ql3: "अॅडमिन लॉगिन",
+    footer_ql4: "योजना व भरपाई",
+    footer_damage: "समाविष्ट नुकसान",
+    footer_verified: "द्वारे पडताळले",
+    footer_ministry: "कृषी मंत्रालय",
+    footer_copy: "© २०२६ कृषक",
+    notfound_desc: "पृष्ठ सापडले नाही — कदाचित शेत हलले असेल?",
+    notfound_btn: "मुख्यपृष्ठावर जा",
+    logout: "लॉगआउट",
+    back: "परत",
+    government: "भारत सरकार • थेट लाभ"
   },
   hi: {
     nav_home: "होम",
@@ -163,16 +310,86 @@ const TRANSLATIONS = {
     cta_sub: "पहले से रिपोर्ट करने वाले किसानों से जुड़ें। सिर्फ 2 मिनट। हेल्पलाइन हमेशा खुली।",
     cta_btn: "मुफ्त किसान खाता बनाएं",
     cta_login: "पहले से खाता है? लॉगिन करें",
-    cta_admin: "एडमिन लॉगिन"
+    cta_admin: "एडमिन लॉगिन",
+    login_title: "किसान लॉगिन",
+    login_sub: "यूज़रनेम या ईमेल इस्तेमाल करें। डेमो: ramesh / farmer123",
+    login_user: "यूज़रनेम या ईमेल",
+    login_pass: "पासवर्ड",
+    login_remember: "याद रखें",
+    login_forgot: "भूल गए? हेल्पलाइन कॉल करें",
+    login_submit: "डैशबोर्ड पर लॉगिन",
+    login_reg: "नए किसान? 30 सेकंड में पंजीकरण",
+    login_admin: "क्या आप एडमिन हैं? लॉगिन करें",
+    reg_title: "किसान खाता बनाएँ",
+    reg_sub: "मुफ्त, 30 सेकंड। नुकसान रिपोर्ट तुरंत।",
+    reg_name: "पूरा नाम / यूज़रनेम *",
+    reg_mobile: "मोबाइल नंबर *",
+    reg_email: "ईमेल *",
+    reg_pass: "पासवर्ड *",
+    reg_village: "गाँव *",
+    reg_district: "जिला *",
+    reg_agree: "मैं किसान हूँ और जानकारी सही है, सत्यापन के लिए सहमत हूँ।",
+    reg_submit: "खाता बनाएँ — मुफ्त",
+    reg_login: "पहले से खाता है? लॉगिन करें",
+    reg_help: "मदद चाहिए? 1800-180-1551 पर कॉल करें — हम पंजीकरण कर देंगे।",
+    dash_welcome: "नमस्ते",
+    dash_pending: "लंबित",
+    dash_total: "कुल रिपोर्ट",
+    dash_approved: "स्वीकृत",
+    dash_help: "मदद चाहिए?",
+    dash_my: "मेरी नुकसान रिपोर्ट",
+    dash_no: "अभी कोई रिपोर्ट नहीं",
+    dash_no_sub: "पहली रिपोर्ट के लिए बटन दबाएँ। 2 मिनट लगता है।",
+    dash_start: "शुरू करें",
+    dash_tip: "टिप: 2-3 कोन से फोटो लें, निशान शामिल करें। साफ फोटो = तेज सत्यापन।",
+    report_title: "फसल नुकसान रिपोर्ट — सरल फॉर्म",
+    report_farmer: "किसान और खेत जानकारी",
+    report_crop: "फसल और नुकसान विवरण",
+    report_submit: "रिपोर्ट जमा करें",
+    admin_title: "एडमिन केंद्र",
+    admin_sub: "किसान रिपोर्ट निगरानी • सत्यापन • स्वीकृति",
+    admin_pending: "लंबित कतार",
+    admin_view: "सभी लंबित देखें",
+    admin_type: "नुकसान प्रकार",
+    admin_sev: "तीव्रता वितरण",
+    admin_top: "टॉप जिले",
+    admin_all: "सभी रिपोर्ट",
+    admin_filter: "फिल्टर",
+    admin_reset: "रीसेट",
+    admin_manage: "प्रबंधित करें",
+    admin_action: "एडमिन कार्रवाई — स्थिति बदलें",
+    admin_save: "सहेजें और किसान को सूचित करें",
+    about_title: "कृषक — फसल नुकसान योजना",
+    about_sub: "किसानों को सीधे कृषि कार्यालय से जोड़ने वाला प्लेटफॉर्म।",
+    about_who: "कौन आवेदन कर सकता है?",
+    about_docs: "जरूरी दस्तावेज",
+    about_flow: "भरपाई प्रक्रिया",
+    about_contact: "संपर्क",
+    about_demo: "डेमो लॉगिन",
+    footer_desc: "स्वच्छ खेत प्लेटफॉर्म — मानसून, बाढ़, प्रदूषण, सूखा, कीट। 2 मिनट रिपोर्ट, सीधा DBT।",
+    footer_quick: "त्वरित लिंक",
+    footer_ql1: "किसान पंजीकरण",
+    footer_ql2: "नुकसान रिपोर्ट",
+    footer_ql3: "एडमिन लॉगिन",
+    footer_ql4: "योजना और भरपाई",
+    footer_damage: "शामिल नुकसान",
+    footer_verified: "द्वारा सत्यापित",
+    footer_ministry: "कृषि मंत्रालय",
+    footer_copy: "© 2026 कृषक",
+    notfound_desc: "पेज नहीं मिला — शायद खेत हिल गया?",
+    notfound_btn: "होम पर जाएँ",
+    logout: "लॉगआउट",
+    back: "वापस",
+    government: "भारत सरकार • प्रत्यक्ष लाभ"
   }
 };
 
 function applyLang(lang){
   const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  const en = TRANSLATIONS.en;
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key = el.getAttribute('data-i18n');
     if(dict[key]!==undefined){
-      // allow HTML in desc
       if(dict[key].includes('<')) el.innerHTML = dict[key];
       else el.textContent = dict[key];
     }
@@ -181,9 +398,25 @@ function applyLang(lang){
     const key = el.getAttribute('data-i18n-placeholder');
     if(dict[key]!==undefined) el.placeholder = dict[key];
   });
+  // Fallback: auto-translate any leaf text that exactly matches English dictionary (covers all pages without explicit data-i18n)
+  if(lang!=='en'){
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+    const toTranslate = [];
+    let node;
+    while(node = walker.nextNode()){
+      const txt = node.nodeValue.trim();
+      if(!txt) continue;
+      for(const k in en){
+        if(en[k]===txt && dict[k] && dict[k]!==txt){
+          toTranslate.push([node, dict[k]]);
+          break;
+        }
+      }
+    }
+    toTranslate.forEach(([n,v])=>{ n.nodeValue = n.nodeValue.replace(n.nodeValue.trim(), v); });
+  }
   localStorage.setItem('ks_lang', lang);
   document.documentElement.lang = lang;
-  // update switcher label
   document.querySelectorAll('.lang-label').forEach(l=> l.textContent = lang==='mr'?'मराठी': lang==='hi'?'हिंदी':'EN');
   document.querySelectorAll('.lang-opt').forEach(opt=>{
     opt.classList.toggle('active', opt.dataset.lang===lang);

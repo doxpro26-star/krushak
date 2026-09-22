@@ -41,7 +41,7 @@
             <ul class="dropdown-menu" style="background:var(--snow); border:1.5px solid var(--green);">
               <li><span class="dropdown-item-text small" style="color:var(--green);">{{ current_user.role|upper }} • {{ current_user.district }}</span></li>
               <li><hr class="dropdown-divider" style="border-color:var(--green); opacity:.2;"></li>
-              <li><a class="dropdown-item" href="{{ url_for('logout') }}" style="color:var(--green);"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('logout') }}" style="color:var(--green);" data-i18n="logout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
             </ul>
           </li>
         {% else %}
@@ -85,31 +85,31 @@
           <span class="fw-bold" style="color:var(--snow); font-family:Poppins,sans-serif;">Krushak</span>
           <span class="brand-badge" style="background:var(--snow); color:var(--green);">GOVT • 2026</span>
         </div>
-        <p class="small muted">Clean farm platform — Monsoon, Flood, Pollution, Drought & Pest. 2-minute reporting, direct DBT.</p>
+        <p class="small muted" data-i18n="footer_desc">Clean farm platform — Monsoon, Flood, Pollution, Drought & Pest. 2-minute reporting, direct DBT.</p>
         <p class="small mb-0"><i class="bi bi-telephone me-2"></i>1800-180-1551 • <i class="bi bi-envelope ms-2"></i> help@krushak.gov.in</p>
       </div>
       <div class="col-6 col-lg-2">
-        <h2 class="h6 small fw-bold" style="letter-spacing:.4px;">QUICK LINKS</h2>
+        <h2 class="h6 small fw-bold" style="letter-spacing:.4px;" data-i18n="footer_quick">QUICK LINKS</h2>
         <ul class="list-unstyled small">
-          <li><a href="{{ url_for('farmer_register') }}">Farmer Registration</a></li>
-          <li><a href="{{ url_for('farmer_report_new') }}">Report Damage</a></li>
-          <li><a href="{{ url_for('admin_login') }}">Admin Login</a></li>
-          <li><a href="{{ url_for('about') }}">Scheme & Compensation</a></li>
+          <li><a href="{{ url_for('farmer_register') }}" data-i18n="footer_ql1">Farmer Registration</a></li>
+          <li><a href="{{ url_for('farmer_report_new') }}" data-i18n="footer_ql2">Report Damage</a></li>
+          <li><a href="{{ url_for('admin_login') }}" data-i18n="footer_ql3">Admin Login</a></li>
+          <li><a href="{{ url_for('about') }}" data-i18n="footer_ql4">Scheme & Compensation</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-3">
-        <h2 class="h6 small fw-bold">DAMAGE COVERED</h2>
+        <h2 class="h6 small fw-bold" data-i18n="footer_damage">DAMAGE COVERED</h2>
         <ul class="list-unstyled small">
-          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;">Heavy Monsoon</a></li>
-          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;">Flood</a></li>
-          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;">Drought</a></li>
-          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;">Pollution</a></li>
+          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;" data-i18n="dmg_monsoon_t">Heavy Monsoon</a></li>
+          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;" data-i18n="dmg_flood_t">Flood</a></li>
+          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;" data-i18n="dmg_drought_t">Drought</a></li>
+          <li><a href="{{ url_for('index') }}#damage" style="color:var(--snow); opacity:.9;" data-i18n="dmg_pollution_t">Pollution</a></li>
         </ul>
       </div>
       <div class="col-lg-3 text-lg-end">
-        <div class="small muted">Verified by</div>
-        <div class="fw-bold">Ministry of Agriculture<br>& Farmers Welfare</div>
-        <div class="mt-2 small muted">© 2026 Krushak</div>
+        <div class="small muted" data-i18n="footer_verified">Verified by</div>
+        <div class="fw-bold" data-i18n="footer_ministry">Ministry of Agriculture<br>& Farmers Welfare</div>
+        <div class="mt-2 small muted" data-i18n="footer_copy">© 2026 Krushak</div>
       </div>
     </div>
   </div>

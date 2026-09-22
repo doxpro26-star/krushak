@@ -5,24 +5,24 @@
   <div class="row justify-content-center">
     <div class="col-lg-9">
       <div class="d-flex align-items-center gap-3 mb-3">
-        <a href="{{ url_for('farmer_dashboard') }}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left"></i> Back</a>
-        <h4 class="fw-bold mb-0">Report Crop Damage — <span class="text-success">सरल फॉर्म</span></h4>
+        <a href="{{ url_for('farmer_dashboard') }}" class="btn btn-outline-secondary btn-sm" data-i18n="back"><i class="bi bi-arrow-left"></i> Back</a>
+        <h1 class="h4 fw-bold mb-0" data-i18n="report_title">Report Crop Damage — Simple Form</h1>
       </div>
       <div class="alert alert-warning small d-flex gap-2"><i class="bi bi-info-circle"></i><div>Fields marked * are required. You can write in Marathi/Hindi/English. Photo helps for fast approval.</div></div>
 
       <form method="POST" enctype="multipart/form-data" class="card border-0 shadow-lg rounded-4">
         <div class="card-body p-4 p-md-5">
-          <h6 class="fw-bold text-success border-bottom pb-2"><i class="bi bi-person me-2"></i>Farmer & Field Info</h6>
+          <h2 class="h6 fw-bold text-success border-bottom pb-2" data-i18n="report_farmer"><i class="bi bi-person me-2"></i>Farmer & Field Info</h2>
           <div class="row g-3 mt-1">
-            <div class="col-md-6"><label class="form-label small fw-semibold">Farmer Name *</label><input name="farmer_name" class="form-control" value="{{ current_user.username }}" required></div>
-            <div class="col-md-3"><label class="form-label small fw-semibold">Mobile *</label><input name="mobile" class="form-control" value="{{ current_user.mobile }}" required></div>
+            <div class="col-md-6"><label class="form-label small fw-semibold" data-i18n="reg_name">Farmer Name *</label><input name="farmer_name" class="form-control" value="{{ current_user.username }}" required></div>
+            <div class="col-md-3"><label class="form-label small fw-semibold" data-i18n="reg_mobile">Mobile *</label><input name="mobile" class="form-control" value="{{ current_user.mobile }}" required></div>
             <div class="col-md-3"><label class="form-label small fw-semibold">Survey No.</label><input name="survey_no" class="form-control" placeholder="e.g., 124/A"></div>
-            <div class="col-md-4"><label class="form-label small fw-semibold">Village *</label><input name="village" class="form-control" value="{{ current_user.village }}" required></div>
-            <div class="col-md-4"><label class="form-label small fw-semibold">District *</label><input name="district" class="form-control" value="{{ current_user.district }}" required></div>
+            <div class="col-md-4"><label class="form-label small fw-semibold" data-i18n="reg_village">Village *</label><input name="village" class="form-control" value="{{ current_user.village }}" required></div>
+            <div class="col-md-4"><label class="form-label small fw-semibold" data-i18n="reg_district">District *</label><input name="district" class="form-control" value="{{ current_user.district }}" required></div>
             <div class="col-md-4"><label class="form-label small fw-semibold">State</label><input name="state" class="form-control" value="Maharashtra"></div>
           </div>
 
-          <h6 class="fw-bold text-success border-bottom pb-2 mt-4"><i class="bi bi-flower1 me-2"></i>Crop & Damage Details</h6>
+          <h2 class="h6 fw-bold text-success border-bottom pb-2 mt-4" data-i18n="report_crop"><i class="bi bi-flower1 me-2"></i>Crop & Damage Details</h2>
           <div class="row g-3 mt-1">
             <div class="col-md-4">
               <label class="form-label small fw-semibold">Crop Type *</label>
@@ -47,7 +47,6 @@
                 <option value="">Select level</option>
                 <option>Low</option><option>Medium</option><option>High</option><option>Severe</option>
               </select>
-              <div class="form-text small">Severe = >70% crop lost</div>
             </div>
             <div class="col-md-4"><label class="form-label small fw-semibold">Damage Date *</label><input name="damage_date" type="date" class="form-control" required></div>
 
@@ -55,23 +54,18 @@
             <div class="col-md-6">
               <label class="form-label small fw-semibold">Photo of Damaged Field (1 photo) <span class="text-muted fw-normal">— jpg/png</span></label>
               <input name="photo" type="file" class="form-control" accept="image/*">
-              <div class="form-text small">Tip: Take photo in daylight, show whole field + close-up.</div>
             </div>
             <div class="col-12">
               <label class="form-label small fw-semibold">Describe Damage in your words *</label>
-              <textarea name="description" rows="4" class="form-control" placeholder="e.g., Heavy rain for 4 days, water stayed 1 foot, soybean leaves turned yellow, roots rotten. Factory smoke also affected..." required></textarea>
-              <div class="d-flex gap-2 mt-2">
-                <span class="badge bg-light text-dark border">Example: पाणी साचले, पीक कुजले</span>
-                <span class="badge bg-light text-dark border">Example: Chemical water entered field</span>
-              </div>
+              <textarea name="description" rows="4" class="form-control" placeholder="e.g., Heavy rain for 4 days..." required></textarea>
             </div>
           </div>
 
           <div class="form-check mt-4">
             <input class="form-check-input" type="checkbox" required id="declare">
-            <label class="form-check-label small" for="declare">I declare information is true. I understand false report may be rejected. I consent for field verification.</label>
+            <label class="form-check-label small" for="declare" data-i18n="reg_agree">I declare information is true. I understand false report may be rejected. I consent for field verification.</label>
           </div>
-          <button class="btn btn-success btn-lg w-100 mt-3 fw-bold shadow" type="submit"><i class="bi bi-send me-2"></i>Submit Damage Report</button>
+          <button class="btn btn-success btn-lg w-100 mt-3 fw-bold shadow" type="submit" data-i18n="report_submit"><i class="bi bi-send me-2"></i>Submit Damage Report</button>
           <div class="text-center small text-muted mt-2">You will get SMS when admin verifies. Track status in Dashboard.</div>
         </div>
       </form>

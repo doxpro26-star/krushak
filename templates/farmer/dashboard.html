@@ -4,22 +4,22 @@
 <div class="container py-4">
   <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
     <div>
-      <h3 class="fw-bold mb-1">Namaste, {{ current_user.username }} <span class="text-success">🌱</span></h3>
-      <p class="text-muted small mb-0"><i class="bi bi-geo-alt me-1"></i>{{ current_user.village }}, {{ current_user.district }} • <i class="bi bi-phone me-1"></i>{{ current_user.mobile }} • Member since {{ current_user.created_at.strftime('%b %Y') }}</p>
+      <h3 class="fw-bold mb-1"><span data-i18n="dash_welcome">Welcome</span>, {{ current_user.username }} <span class="text-success">🌱</span></h3>
+      <p class="text-muted small mb-0"><i class="bi bi-geo-alt me-1"></i>{{ current_user.village }}, {{ current_user.district }} • <i class="bi bi-phone me-1"></i>{{ current_user.mobile }}</p>
     </div>
-    <a href="{{ url_for('farmer_report_new') }}" class="btn btn-warning btn-lg fw-bold shadow"><i class="bi bi-plus-lg me-1"></i> Report New Damage</a>
+    <a href="{{ url_for('farmer_report_new') }}" class="btn btn-warning btn-lg fw-bold shadow" data-i18n="dash_start"><i class="bi bi-plus-lg me-1"></i> Report New Damage</a>
   </div>
 
   <div class="row g-3 mb-4">
-    <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3"><div class="text-muted small">Total Reports</div><div class="fs-2 fw-bold">{{ stats.total }}</div><div class="small text-success">All time</div></div></div>
-    <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3 bg-warning-subtle"><div class="text-muted small">Pending Review</div><div class="fs-2 fw-bold text-warning-emphasis">{{ stats.pending }}</div><div class="small">Govt will review in 24–48h</div></div></div>
-    <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3 bg-success-subtle"><div class="text-muted small">Approved</div><div class="fs-2 fw-bold text-success">{{ stats.approved }}</div><div class="small">Compensation ready</div></div></div>
-    <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3"><div class="small fw-bold">Need Help?</div><div class="small text-muted">Toll-Free</div><div class="fw-bold text-success">1800-180-1551</div></div></div>
+    <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3"><div class="text-muted small" data-i18n="dash_total">Total Reports</div><div class="fs-2 fw-bold">{{ stats.total }}</div></div></div>
+    <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3 bg-warning-subtle"><div class="text-muted small" data-i18n="dash_pending">Pending Review</div><div class="fs-2 fw-bold text-warning-emphasis">{{ stats.pending }}</div></div></div>
+    <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3 bg-success-subtle"><div class="text-muted small" data-i18n="dash_approved">Approved</div><div class="fs-2 fw-bold text-success">{{ stats.approved }}</div></div></div>
+    <div class="col-6 col-md-3"><div class="card border-0 shadow-sm rounded-4 text-center p-3"><div class="small fw-bold" data-i18n="dash_help">Need Help?</div><div class="small text-muted">Toll-Free</div><div class="fw-bold text-success">1800-180-1551</div></div></div>
   </div>
 
   <div class="card border-0 shadow-sm rounded-4">
     <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center pt-4">
-      <h5 class="fw-bold mb-0"><i class="bi bi-clipboard2-check me-2 text-success"></i>My Damage Reports</h5>
+      <h5 class="fw-bold mb-0" data-i18n="dash_my"><i class="bi bi-clipboard2-check me-2 text-success"></i>My Damage Reports</h5>
       <span class="badge bg-light text-dark border">{{ reports|length }} records</span>
     </div>
     <div class="card-body p-0">
@@ -36,16 +36,9 @@
               <td><div class="fw-semibold small">{{ r.crop_type }}</div><div class="small text-muted">{{ r.damage_type }} • {{ r.farm_size }} acre</div></td>
               <td class="small">{{ r.village }}, {{ r.district }}</td>
               <td class="small">{{ r.damage_date }}</td>
-              <td><span class="badge bg-{{ 'danger' if r.severity=='Severe' else 'warning text-dark' if r.severity=='High' else 'info' if r.severity=='Medium' else 'secondary' }}">{{ r.severity }}</span></td>
-              <td>
-                {% if r.status=='Pending' %}<span class="badge bg-warning text-dark">Pending</span>
-                {% elif r.status=='Verified' %}<span class="badge bg-info">Verified</span>
-                {% elif r.status=='Approved' %}<span class="badge bg-success">Approved</span>
-                {% elif r.status=='Rejected' %}<span class="badge bg-danger">Rejected</span>
-                {% elif r.status=='Compensation Initiated' %}<span class="badge bg-success">Compensation Initiated</span>
-                {% else %}<span class="badge bg-secondary">{{ r.status }}</span>{% endif %}
-              </td>
-              <td><a href="{{ url_for('farmer_report_detail', report_id=r.id) }}" class="btn btn-outline-success btn-sm">View</a></td>
+              <td><span class="badge bg-secondary">{{ r.severity }}</span></td>
+              <td><span class="badge bg-warning text-dark">{{ r.status }}</span></td>
+              <td><a href="{{ url_for('farmer_report_detail', report_id=r.id) }}" class="btn btn-outline-success btn-sm" data-i18n="admin_manage">View</a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -53,18 +46,18 @@
       </div>
       {% else %}
       <div class="text-center py-5">
-        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" width="80" class="opacity-50 mb-3">
-        <h6 class="fw-bold">No reports yet</h6>
-        <p class="small text-muted">Click "Report New Damage" to raise your first request. Takes 2 minutes.</p>
-        <a href="{{ url_for('farmer_report_new') }}" class="btn btn-success">Start Reporting</a>
+        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" width="80" class="opacity-50 mb-3" alt="">
+        <h6 class="fw-bold" data-i18n="dash_no">No reports yet</h6>
+        <p class="small text-muted" data-i18n="dash_no_sub">Click Report New Damage to raise your first request. Takes 2 minutes.</p>
+        <a href="{{ url_for('farmer_report_new') }}" class="btn btn-success" data-i18n="dash_start">Start Reporting</a>
       </div>
       {% endif %}
     </div>
   </div>
 
   <div class="alert alert-success mt-4 d-flex gap-3 align-items-start">
-    <i class="bi bi-lightbulb fs-4"></i>
-    <div class="small"><strong>Farmer Tip:</strong> Take photo from 2–3 angles, include nearby landmark. Clear photo = faster verification. Avoid blurry / dark photos.</div>
+    <i class="bi bi-lightbulb fs-4" aria-hidden="true"></i>
+    <div class="small" data-i18n="dash_tip"><strong>Farmer Tip:</strong> Take photo from 2–3 angles, include nearby landmark. Clear photo = faster verification.</div>
   </div>
 </div>
 {% endblock %}
