@@ -9,3 +9,5 @@ venv/
 .env
 static/uploads/*
 !static/uploads/.gitkeep
+.vercel
+.render

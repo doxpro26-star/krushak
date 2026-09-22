@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: krushak-backend
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      # Uncomment to use Render Postgres instead of SQLite:
+      # - key: DATABASE_URL
+      #   fromDatabase:
+      #     name: krushak-db
+      #     property: connectionString
+
+# Uncomment to create managed Postgres:
+#databases:
+#  - name: krushak-db
+#    plan: free
+#    databaseName: krushak
+#    user: krushak

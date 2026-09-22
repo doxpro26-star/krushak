@@ -7,11 +7,15 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from config import Config
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object(Config)
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(os.path.join(os.path.dirname(__file__), 'instance'), exist_ok=True)
+
+# CORS for Vercel frontend -> Render backend
+CORS(app, supports_credentials=True)
 
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
@@ -344,4 +348,6 @@ with app.app_context():
             db.session.commit()
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_ENV') != 'production'
+    app.run(debug=debug, host='0.0.0.0', port=port)
